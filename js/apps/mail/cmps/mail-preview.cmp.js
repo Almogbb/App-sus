@@ -1,21 +1,16 @@
 export default {
     props: ['user'],
     template: `
-        <section @click="selectUser" class="user-preview">
-            {{user.name}} 
+        <section class="user-preview">
+           <router-link :to="'/mail/'+user.id"> {{user.name}}  |
             {{user.subject}} |
-            {{user.body}} | 
-            <router-link :to="'/mail/'+user.id">Details</router-link>
+            {{user.body}}  </router-link>
         </section>
     `,
     data() {
-        return {
-
-        }
+        return {}
     },
     methods: {
-        selectUser() {
-            this.$emit('selectUser', this.user)
-        },
+
     },
 }

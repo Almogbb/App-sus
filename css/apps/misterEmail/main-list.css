@@ -1,0 +1,10 @@
+.mail-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mail-list a {
+    text-decoration: none;
+    color: #272124;
+}

@@ -3,8 +3,8 @@ import mailPreview from "./mail-preview.cmp.js"
 export default {
     props: ['users'],
     template: `
-        <section class="mail-list">
-            <ul>
+        <section class="main-list margin-left">
+            <ul class="mail-list">
                 <li v-for="user in users" :key="user.id">
                    <mail-preview :user="user" @selectUser="selectUser(user)" /> 
                 </li>

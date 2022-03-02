@@ -1,6 +1,7 @@
 import { mailService } from '../services/mail-service.js'
 import mailList from '../cmps/mail-list.cmp.js'
 import mailFilter from '../cmps/mail-filter.cmp.js'
+import mailCompose from '../cmps/mail-compose.cmp.js'
 
 
 
@@ -8,6 +9,7 @@ export default {
     // props: [""],
     template: `
         <section class="mail-index">
+            <mail-compose />
             <mail-filter @filtered="setFilter" />
             <mail-list :users="usersToShow" />
             
@@ -16,6 +18,7 @@ export default {
     components: {
         mailList,
         mailFilter,
+        mailCompose,
     },
     data() {
         return {

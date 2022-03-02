@@ -4,8 +4,10 @@
 @import 'setup/typography.css';
 
 /* APPS */
-@import 'apps/missKeep/keep.css';
 
+@import 'apps/missKeep/keep.css';
+@import 'apps/misterEmail/main-list.css';
+@import 'apps/misterEmail/main-content.css';
 
 /* COMPONENTS */
 

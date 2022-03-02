@@ -1,0 +1,12 @@
+.user-preview:hover {
+    border: solid 1px;
+    color: #D7DCDE;
+}
+
+.user-preview {
+    height: 39px;
+}
+
+.margin-left {
+    margin-left: 256px;
+}
