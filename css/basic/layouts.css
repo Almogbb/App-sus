@@ -1,0 +1,10 @@
+.main-layout {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+.grid-content {
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}

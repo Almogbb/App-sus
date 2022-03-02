@@ -1,24 +1,35 @@
-*{
-    box-sizing: border-box;
-}
+/* SETUP  */
 
-body{
-    margin: 0;
-}
+@import 'setup/vars.css';
+@import 'setup/typography.css';
 
-h1, h2, h3, h4, h5, h6, p {
-    margin: 0;
-}
+/* APPS */
+
+@import
+/* COMPONENTS */
 
 
-.main-header{
-    height: 10vh;
-    background-color: rgb(170, 179, 179);
-    display: flex;
-    align-items: center;
-}
+/* @import 'cmps/add-book.css'; */
 
-.main-footer{
-    height: 10vh;
-    background-color: rgb(170, 179, 179);
-}
+
+/* @import 'cmps/main-header.css'; */
+
+
+/* @import 'cmps/add-review.css'; */
+
+
+/* @import 'cmps/book-details.css'; */
+
+
+/* @import 'cmps/footer.css'; */
+
+
+/* @import 'cmps/main-content.css'; */
+
+
+/* BASE */
+
+@import 'basic/layouts.css';
+@import 'basic/base.css';
+@import 'basic/helpers.css';
+@import 'basic/mq.css';
