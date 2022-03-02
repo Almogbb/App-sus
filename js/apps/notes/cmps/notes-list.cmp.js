@@ -1,33 +1,28 @@
-
+import notePreview from './notes-preview.cmp.js';
 
 export default {
     props: ['notes'],
     template: `
         <section class="note-list">
             <article v-for="note in notes" :key="note.id" >
-                <!-- <component is:></component> -->
-                <div class="note" >
-                    id: {{note.id}}
-                    <!-- type: {{note.info}} -->
-                    <div class="show-btn">
-                        <button class="note-btn">paint</button>
-                        <button class="note-btn">paint</button>
-                        <button class="note-btn">paint</button>
-                        <button class="note-btn">paint</button>
-                        <button class="note-btn">paint</button>
-                    
-                    </div>
-                </div>
+                <note-preview @removeNote="removeNote" :note="note"/>
             </article>
         </section>
     `,
-    components: {},
+    components: {
+        notePreview
+    },
     created() { },
     data() {
         return {
 
         }
     },
-    methods: {},
+    methods: {
+        removeNote(id) {
+            console.log('id from father', id);
+            this.$emit('removeNote', id)
+        }
+    },
     computed: {},
 }

@@ -4,13 +4,16 @@ import { utilService } from '../../../cmps/services/util-service.js';
 
 const NOTES_KEY = 'notesDB'
 
-createCards()
+createNotes()
 
 export const notesService = {
     query,
     remove,
     get,
     save,
+    addNote,
+    getEmptyNote,
+    removeNote
 
 }
 
@@ -32,7 +35,25 @@ function save(car) {
     else return storageService.post(NOTES_KEY, car);
 }
 
-function createCards() {
+function addNote(inputTxt) {
+
+    const note = _createNote();
+    note.info.txt = inputTxt;
+    return storageService.post(NOTES_KEY, note)
+
+}
+
+function removeNote(id, notes) {
+    // console.log(id);
+    // console.log(notes);
+    const noteIdx = notes.findIndex(note => note.id === id);
+    console.log(noteIdx);
+    notes.splice(noteIdx, 1);
+
+}
+
+
+function createNotes() {
     let notes = utilService.loadFromStorage(NOTES_KEY);
     if (!notes || !notes.length) {
         notes = [];
@@ -96,8 +117,22 @@ function createCards() {
     return notes;
 }
 
+function getEmptyNote(isPinned = false) {
+    return {
+        id: '',
+        type: "note-txt",
+        isPinned,
+        info: {
+            txt: ''
+        }
+    };
+}
 
-
+function _createNote(isPinned = false) {
+    const note = getEmptyNote(isPinned = false)
+    note.id = utilService.makeId()
+    return note;
+}
 
 
 // const notes = [
