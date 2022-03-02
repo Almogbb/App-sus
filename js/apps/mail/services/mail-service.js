@@ -32,6 +32,7 @@ function createUsers() {
         users = [{
                 id: utilService.makeId(),
                 name: 'Yaron',
+                type: 'Sent',
                 subject: 'Miss you!',
                 body: 'Would love to catch up sometimes',
                 isRead: false,
