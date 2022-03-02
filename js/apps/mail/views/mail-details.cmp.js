@@ -1,8 +1,10 @@
+import { mailService } from '../services/mail-service.js'
+
+
 export default {
-    props: ['users'],
+    // props: [""],
     template: `
-        <section class="mail-list">
-            <p>{{users}}</p>
+        <section>
         </section>
     `,
     components: {},
@@ -14,7 +16,3 @@ export default {
     computed: {},
     unmounted() { },
 }
-
-
-
-// email details = book details
