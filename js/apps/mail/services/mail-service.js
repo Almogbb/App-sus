@@ -47,7 +47,6 @@ function createUsers() {
         ]
         utilService.saveToStorage(USERS_KEY, users)
     }
-    console.log(users);
     return users
 }
 
