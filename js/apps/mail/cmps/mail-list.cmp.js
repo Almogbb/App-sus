@@ -1,17 +1,16 @@
-
-
 export default {
-    // props: [""],
+    props: ['users'],
     template: `
-        <section>
+        <section class="mail-list">
+            <p>{{users}}</p>
         </section>
     `,
     components: {},
-    created() { },
+    created() {},
     data() {
         return {}
     },
     methods: {},
     computed: {},
-    unmounted() { },
+    unmounted() {},
 }
