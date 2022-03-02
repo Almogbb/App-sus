@@ -13,35 +13,38 @@ createUsers();
 function createUsers() {
     let users = utilService.loadFromStorage(USERS_KEY);
     if (!users || !users.length) {
-        users = [];
-        users.push({
+        users = [{
             id: utilService.makeId(),
+            name: 'Yaron',
             subject: 'Miss you!',
             body: 'Would love to catch up sometimes',
             isRead: false,
             sentAt: 1551133930594,
             to: 'momo@momo.com',
-        }, {
+        },
+        {
             id: utilService.makeId(),
+            name: 'Adam',
             subject: 'Best product EVER',
             body: 'I heard you are interested in our product',
             isRead: false,
             sentAt: 1551133930594,
             to: 'momo@momo.com',
-        }, {
+        },
+        {
             id: utilService.makeId(),
+            name: 'Tamir',
             subject: 'Microsoft HR',
             body: 'About your job application',
             isRead: false,
             sentAt: 1551133930594,
             to: 'momo@momo.com'
-        })
-
+        }]
+        utilService.saveToStorage(USERS_KEY, users)
     }
     console.log(users);
     return users
 }
-
 
 const loggedinUser = {
     email: 'user@appsus.com',
