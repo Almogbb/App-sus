@@ -1,3 +1,5 @@
+import aboutPage from './views/about-page.cmp.js'
+import homePage from './views/home-page.cmp.js'
 import mailApp from './apps/mail/views/mail-app.cmp.js';
 import mailDetails from './apps/mail/views/mail-details.cmp.js'
 
@@ -15,27 +17,26 @@ const routes = [
         component: aboutPage
     },
     {
-        path: '/books',
-        component: bookApp
+        path: '/mail',
+        component: mailApp
     },
     {
-        path: '/mail',
-        component: mailApp,
-        children: [
-            {
-                path: 'Details',
-                component: mailDetails
-            }
-        ]
+        path: '/mail/:mailId',
+        component: mailDetails
     },
+    // {
+    //     path: '/mail',
+    //     component: mailApp,
+    //     children: [{
+    //         path: 'Details',
+    //         component: mailDetails
+    //     }]
+    // },
     // {
     //     path: '/notes',
     //     component: notesApp
     // },
-    {
-        path: '/',
-        component: homePage
-    },
+
 
 ]
 

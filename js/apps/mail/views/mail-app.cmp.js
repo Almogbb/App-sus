@@ -9,7 +9,7 @@ export default {
     template: `
         <section class="mail-index">
             <mail-filter @filtered="setFilter" />
-            <mail-list :users="usersToShow"/>
+            <mail-list :users="usersToShow" />
             
         </section>
     `,

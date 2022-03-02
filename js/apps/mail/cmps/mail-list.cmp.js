@@ -6,14 +6,8 @@ export default {
         <section class="mail-list">
             <ul>
                 <li v-for="user in users" :key="user.id">
-                   <mail-preview :user="user"/> 
-                   <!-- <mail-preview />  -->
-                    <button @click ="toDetails"></button>
+                   <mail-preview :user="user" @selectUser="selectUser(user)" /> 
                 </li>
-
-                <nav>
-                    <router-link to="/mail/"></router-link>
-                </nav>
             </ul>
         </section>
     `,
@@ -26,8 +20,8 @@ export default {
     },
     created() {},
     methods: {
-        toDetails() {
-            console.log('ss');
+        selectUser(user) {
+            this.$emit('selectUser', user)
         }
     },
     computed: {},
