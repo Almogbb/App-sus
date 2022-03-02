@@ -6,11 +6,14 @@ export default {
         <section>
             <div class="note " >
                 <button class="note-btn" @click="removeNote(note.id)">X</button>
+                <button class="note-btn pinned">+</button>
+                
                 <div contenteditable="true">
+                    <!-- <components is></components> -->
                     {{note.info.txt}}
                 </div>
-                <div class=" show-btn">
-                    <button class="note-btn">img</button>
+                <div class="btn-group show-btn">
+                    <button class="note-btn" @click="duplicate(note.id)">Dup</button>
                     <button class="note-btn">img</button>
                     <button class="note-btn">img</button>
                     <button class="note-btn">img</button>
@@ -22,12 +25,17 @@ export default {
     components: {},
     created() { },
     data() {
-        return {}
+        return {
+
+        }
     },
     methods: {
         removeNote(id) {
             console.log(id);
             this.$emit('removeNote', id)
+        },
+        duplicate() {
+            const noteCopy = vue.util.extend({}, id)
         }
     },
     computed: {

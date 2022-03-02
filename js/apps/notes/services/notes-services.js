@@ -30,7 +30,7 @@ function get(notesId) {
 
 }
 
-function save(car) {
+function save(noteId) {
     if (car.id) return storageService.put(NOTES_KEY, car);
     else return storageService.post(NOTES_KEY, car);
 }
@@ -49,7 +49,7 @@ function removeNote(id, notes) {
     const noteIdx = notes.findIndex(note => note.id === id);
     console.log(noteIdx);
     notes.splice(noteIdx, 1);
-
+    return utilService.saveToStorage(NOTES_KEY, notes);
 }
 
 

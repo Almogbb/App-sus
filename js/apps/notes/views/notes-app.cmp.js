@@ -7,7 +7,7 @@ import noteAdd from '../cmps/note-add.cmp.js';
 export default {
 
     template: `
-        <section class="notes-app">
+        <section class="notes-app page-layout">
             <note-add :notes="notes" @addNote="getNote"/>
             <notes-list @removeNote="removeNote" :notes="notes"/>
         </section>
