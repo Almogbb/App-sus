@@ -1,0 +1,25 @@
+.note-list{
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.note{
+    height: 104px;
+    width: 240px;
+    padding: 10px;
+    margin: 10px;
+    background-color: rgb(230, 98, 98);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.note:hover{
+    cursor: pointer;
+}
+
