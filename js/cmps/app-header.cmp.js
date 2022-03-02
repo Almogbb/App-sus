@@ -5,9 +5,10 @@ export default {
                 <h2>App-sus</h2>
             </div>
             <nav class="nav-bar">
-                <router-link to="/"><span>Home</span></router-link>
-                <router-link to="/mail"><span>Mail</span></router-link>
-                <router-link to="/about"><span>About</span></router-link>
+                <router-link to="/"><span>Home</span></router-link>|
+                <router-link to="/mail"><span>Mail</span></router-link>|
+                <router-link to="/about"><span>About</span></router-link>|
+                <router-link to="/notes"><span>Notes</span></router-link>
             </nav>
 
         </header>
@@ -16,7 +17,7 @@ export default {
     data() {
         return {}
     },
-    created() {},
+    created() { },
     methods: {},
     computed: {},
 
