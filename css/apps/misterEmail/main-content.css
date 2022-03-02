@@ -10,3 +10,8 @@
 .margin-left {
     margin-left: 256px;
 }
+
+.mail-compose {
+    max-width: 256px;
+    padding-top: 20px;
+}

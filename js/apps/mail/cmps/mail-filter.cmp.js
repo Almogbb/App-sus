@@ -1,7 +1,7 @@
 export default {
     // props: [""],
     template: `
-        <section class="mail-filter margin-left">
+        <section class="mail-filter margin-left padding-bottom">
         <label>
             Search
             <input @input="setFilter" type="text" v-model="filterBy.name" placeholder="Search...">

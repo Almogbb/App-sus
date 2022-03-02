@@ -8,12 +8,15 @@
 @import 'apps/missKeep/keep.css';
 @import 'apps/misterEmail/main-list.css';
 @import 'apps/misterEmail/main-content.css';
+@import 'apps/misterEmail/mail-folder-list.css';
+@import 'apps/misterEmail/compose-modal.css';
 
 /* COMPONENTS */
 
 @import 'cmps/main-header.css';
 @import 'cmps/main-footer.css';
 @import 'cmps/main-navbar.css';
+@import 'cmps/main-content.css';
 
 /* @import 'cmps/add-book.css'; */
 

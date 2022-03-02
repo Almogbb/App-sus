@@ -1,0 +1,12 @@
+.compose-modal {
+    position: absolute;
+    bottom: 10%;
+    right: 0;
+    width: 521px;
+}
+
+#label-msg {
+    background-color: #404040;
+    padding: 10px;
+    color: white
+}

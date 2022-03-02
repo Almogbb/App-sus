@@ -2,6 +2,7 @@ import { mailService } from '../services/mail-service.js'
 import mailList from '../cmps/mail-list.cmp.js'
 import mailFilter from '../cmps/mail-filter.cmp.js'
 import mailCompose from '../cmps/mail-compose.cmp.js'
+import mailFolderList from '../cmps/mail-folder-list.cmp.js'
 
 
 
@@ -9,16 +10,17 @@ export default {
     // props: [""],
     template: `
         <section class="mail-index">
-            <mail-compose />
+            <mail-compose @sendMail="sendMail" />
+            <mail-folder-list  />
             <mail-filter @filtered="setFilter" />
             <mail-list :users="usersToShow" />
-            
         </section>
     `,
     components: {
         mailList,
         mailFilter,
         mailCompose,
+        mailFolderList,
     },
     data() {
         return {
@@ -37,6 +39,10 @@ export default {
         },
         setFilter(filterBy) {
             this.filterBy = filterBy;
+        },
+        sendMail(newMail) {
+            mailService.addMail(newMail)
+                // .then(newMailAdd=> )
         },
     },
     computed: {
