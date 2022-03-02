@@ -2,9 +2,12 @@ import { mailService } from '../services/mail-service.js'
 
 
 export default {
-    // props: [""],
+
     template: `
         <section>
+            <div>
+                
+            </div>
         </section>
     `,
     components: {},
@@ -14,5 +17,11 @@ export default {
     },
     methods: {},
     computed: {},
-    unmounted() { },
+
 }
+
+
+// • Routable component (page)
+// • show the entire email
+// • Allow deleting an email (using the service)
+// • Allow navigating back to list

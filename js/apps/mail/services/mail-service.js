@@ -6,6 +6,7 @@ const USERS_KEY = 'mailUsersDB';
 
 export const mailService = {
     query,
+    get,
 }
 
 createUsers();
@@ -14,7 +15,9 @@ function query() {
     return storageService.query(USERS_KEY);
 }
 
-
+function get(userId) {
+    return storageService.get(USERS_KEY, userId)
+}
 
 function createUsers() {
     let users = utilService.loadFromStorage(USERS_KEY);

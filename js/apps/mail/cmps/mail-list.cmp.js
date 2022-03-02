@@ -5,7 +5,12 @@ export default {
             <ul>
                 <li v-for="user in users" :key="user.id">
                    <!-- <mail-preview />  -->
+                    <button @click ="toDetails"></button>
                 </li>
+
+                <nav>
+                    <router-link to="/mail/"></router-link>
+                </nav>
             </ul>
         </section>
     `,
@@ -14,7 +19,11 @@ export default {
     data() {
         return {}
     },
-    methods: {},
+    methods: {
+        toDetails() {
+            console.log('ss');
+        }
+    },
     computed: {},
     unmounted() { },
 }
