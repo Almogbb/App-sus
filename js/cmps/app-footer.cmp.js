@@ -4,7 +4,7 @@ export default {
         <section>
             <footer class="main-footer">
                 <div>
-                    footer
+                    <p>&copy; Coffeerights 2022</p>
                 </div>
             </footer>
         </section>
