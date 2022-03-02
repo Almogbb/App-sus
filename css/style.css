@@ -6,7 +6,8 @@
 /* APPS */
 
 /* COMPONENTS */
-
+@import 'cmps/main-header.css';
+@import 'cmps/main-footer.css';
 
 /* @import 'cmps/add-book.css'; */
 

@@ -1,0 +1,6 @@
+.main-header{
+    height: 10vh;
+    background-color: lightgrey;
+    display: flex;
+    align-items: center;
+}
