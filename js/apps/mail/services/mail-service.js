@@ -21,23 +21,21 @@ function createUsers() {
             isRead: false,
             sentAt: 1551133930594,
             to: 'momo@momo.com',
-        },
-            {
-                id: utilService.makeId(),
-                subject: 'Best product EVER',
-                body: 'I heard you are interested in our product',
-                isRead: false,
-                sentAt: 1551133930594,
-                to: 'momo@momo.com',
-            },
-            {
-                id: utilService.makeId(),
-                subject: 'Microsoft HR',
-                body: 'About your job application',
-                isRead: false,
-                sentAt: 1551133930594,
-                to: 'momo@momo.com'
-            })
+        }, {
+            id: utilService.makeId(),
+            subject: 'Best product EVER',
+            body: 'I heard you are interested in our product',
+            isRead: false,
+            sentAt: 1551133930594,
+            to: 'momo@momo.com',
+        }, {
+            id: utilService.makeId(),
+            subject: 'Microsoft HR',
+            body: 'About your job application',
+            isRead: false,
+            sentAt: 1551133930594,
+            to: 'momo@momo.com'
+        })
 
     }
     console.log(users);
@@ -49,28 +47,3 @@ const loggedinUser = {
     email: 'user@appsus.com',
     fullname: 'Mahatma Appsus'
 }
-
-const email = [{
-    id: utilService.makeId(),
-    subject: 'Miss you!',
-    body: 'Would love to catch up sometimes',
-    isRead: false,
-    sentAt: 1551133930594,
-    to: 'momo@momo.com',
-},
-{
-    id: utilService.makeId(),
-    subject: 'Best product EVER',
-    body: 'I heard you are interested in our product',
-    isRead: false,
-    sentAt: 1551133930594,
-    to: 'momo@momo.com',
-},
-{
-    id: utilService.makeId(),
-    subject: 'Microsoft HR',
-    body: 'About your job application',
-    isRead: false,
-    sentAt: 1551133930594,
-    to: 'momo@momo.com'
-}];
