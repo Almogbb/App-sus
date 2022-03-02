@@ -1,7 +1,7 @@
 import { utilService } from '../../../cmps/services/util-service.js';
 import { storageService } from '../../../cmps/services/async-storage-service.js';
 
-const USERS_KEY = 'mailUsers'
+const USERS_KEY = 'mailUsersDB';
 
 
 export const mailService = {
