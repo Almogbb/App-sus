@@ -9,8 +9,10 @@
     height: 104px;
     width: 240px;
     padding: 10px;
-    margin: 10px;
-    background-color: rgb(230, 98, 98);
+    margin-right: 16px;
+    margin-bottom: 16px;
+    /* background-color: rgb(230, 98, 98); */
+    border: 1px solid black;
     color: #333;
     display: flex;
     flex-direction: column;
@@ -25,11 +27,17 @@
 
 .note-btn{
     cursor: pointer;
+    width: 34px;
+    height: 34px;
 }
 
 .show-btn:hover{
     cursor: pointer;
     opacity: 1;
+}
+
+.edit-note::placeholder{
+    font-weight: bold;
 }
 
 
