@@ -1,5 +1,6 @@
 import mailList from '../cmps/mail-list.cmp.js'
-// import { ma }
+
+
 
 export default {
     // props: [""],
@@ -9,10 +10,15 @@ export default {
             
         </section>
     `,
+
+    components: {},
+    created() {},
+
     components: {
         mailList,
     },
-    created() { },
+    created() {},
+
     data() {
         return {
             email: '',
@@ -22,5 +28,5 @@ export default {
 
     },
     computed: {},
-    unmounted() { },
+    unmounted() {},
 }
