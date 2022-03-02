@@ -2,7 +2,11 @@ export default {
     props: ['users'],
     template: `
         <section class="mail-list">
-            <p>{{users}}</p>
+            <ul>
+                <li v-for="user in users" :key="user.id">
+                   <!-- <mail-preview />  -->
+                </li>
+            </ul>
         </section>
     `,
     components: {},
