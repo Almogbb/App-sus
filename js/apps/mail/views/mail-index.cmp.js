@@ -1,5 +1,3 @@
-
-
 export default {
     // props: [""],
     template: `
@@ -8,11 +6,11 @@ export default {
         </section>
     `,
     components: {},
-    created() { },
+    created() {},
     data() {
         return {}
     },
     methods: {},
     computed: {},
-    unmounted() { },
+    unmounted() {},
 }
