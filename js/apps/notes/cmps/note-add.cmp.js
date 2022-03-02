@@ -5,8 +5,7 @@ export default {
     template: `
         <section class="add-note">
             <input v-model="inputTxt" type="text" @blur="addNote(inputTxt)"
-            placeholder="Add note"
-            class="edit-note">
+            placeholder="Add note...">
         </section>
     `,
     components: {},

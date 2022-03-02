@@ -8,17 +8,21 @@
 .note{
     height: 104px;
     width: 240px;
-    padding: 10px;
-    margin-right: 16px;
-    margin-bottom: 16px;
+    padding: 5px;
+    margin-right: 9px;
+    margin-bottom: 10px;
     /* background-color: rgb(230, 98, 98); */
-    border: 1px solid black;
+    border: 1px solid rgb(223, 218, 218);
     color: #333;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border-radius: 10px;
     text-align: center;
+}
+.note:hover{
+    transition: all 0.5s;
+    box-shadow: -4.5px 4.5px 0;
 }
 
 .show-btn{
@@ -36,8 +40,26 @@
     opacity: 1;
 }
 
-.edit-note::placeholder{
-    font-weight: bold;
+
+.btn-group{
+    height: 238px;
+    height: 34px;
+}
+
+.add-note input{
+    font-size: 1.1em;
+    margin: 20px;
+    width: 596px;
+    height: 46px;
+}
+
+.add-note input::placeholder{
+    color: #333;
+}
+
+.page-layout{
+    text-align: center;
+    min-height: 80vh;
 }
 
 
