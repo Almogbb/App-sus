@@ -1,18 +1,26 @@
-
+import mailList from '../cmps/mail-list.cmp.js'
+// import { ma }
 
 export default {
     // props: [""],
     template: `
-        <section>
+        <section class="mail-index">
+            <mail-list />
             
         </section>
     `,
-    components: {},
+    components: {
+        mailList,
+    },
     created() { },
     data() {
-        return {}
+        return {
+            email: '',
+        }
     },
-    methods: {},
+    methods: {
+
+    },
     computed: {},
     unmounted() { },
 }
