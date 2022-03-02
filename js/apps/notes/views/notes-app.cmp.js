@@ -9,7 +9,7 @@ export default {
     template: `
         <section class="notes-app page-layout">
             <note-add :notes="notes" @addNote="getNote"/>
-            <notes-list @removeNote="removeNote" :notes="notes"/>
+            <notes-list @duplicate="duplicateNote" @removeNote="removeNote" :notes="notes"/>
         </section>
     `,
     components: {
@@ -37,6 +37,11 @@ export default {
         removeNote(id) {
             console.log('id for saba', id);
             notesService.removeNote(id, this.notes)
+        },
+        duplicateNote(id) {
+            console.log('id for saba', id);
+            notesService.duplicateNote(id, this.notes)
+            // notesService.removeNote(id, this.notes)
         }
     },
     computed: {},

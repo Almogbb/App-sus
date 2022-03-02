@@ -34,8 +34,8 @@ export default {
             console.log(id);
             this.$emit('removeNote', id)
         },
-        duplicate() {
-            const noteCopy = vue.util.extend({}, id)
+        duplicate(id) {
+            this.$emit('duplicate', id)
         }
     },
     computed: {

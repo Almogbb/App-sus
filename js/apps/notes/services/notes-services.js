@@ -13,7 +13,8 @@ export const notesService = {
     save,
     addNote,
     getEmptyNote,
-    removeNote
+    removeNote,
+    duplicateNote,
 
 }
 
@@ -40,7 +41,6 @@ function addNote(inputTxt) {
     const note = _createNote();
     note.info.txt = inputTxt;
     return storageService.post(NOTES_KEY, note)
-
 }
 
 function removeNote(id, notes) {
@@ -52,6 +52,11 @@ function removeNote(id, notes) {
     return utilService.saveToStorage(NOTES_KEY, notes);
 }
 
+function duplicateNote(id, notes) {
+    const noteCopy = notes.find(note => note.id === id)
+    notes.push(noteCopy);
+    return utilService.saveToStorage(NOTES_KEY, notes)
+}
 
 function createNotes() {
     let notes = utilService.loadFromStorage(NOTES_KEY);

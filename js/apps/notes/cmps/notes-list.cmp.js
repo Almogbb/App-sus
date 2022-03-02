@@ -5,7 +5,7 @@ export default {
     template: `
         <section class="note-list">
             <article v-for="note in notes" :key="note.id" >
-                <note-preview @removeNote="removeNote" :note="note"/>
+                <note-preview @duplicate="duplicate" @removeNote="removeNote" :note="note"/>
             </article>
         </section>
     `,
@@ -22,7 +22,11 @@ export default {
         removeNote(id) {
             console.log('id from father', id);
             this.$emit('removeNote', id)
-        }
+        },
+        duplicate(id) {
+            console.log('id from father', id);
+            this.$emit('duplicate', id)
+        },
     },
     computed: {},
 }
