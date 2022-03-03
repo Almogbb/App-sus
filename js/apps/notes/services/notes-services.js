@@ -15,6 +15,7 @@ export const notesService = {
     getEmptyNote,
     removeNote,
     duplicateNote,
+    saveEdit,
 
 }
 
@@ -32,8 +33,15 @@ function get(notesId) {
 }
 
 function save(noteId) {
-    if (car.id) return storageService.put(NOTES_KEY, noteId);
+    if (noteId) return storageService.put(NOTES_KEY, noteId);
     else return storageService.post(NOTES_KEY, noteId);
+}
+
+function saveEdit(noteId, txt, notes) {
+    console.log(noteId, txt);
+    const note = notes.find(note => note.id === noteId)
+    note.info.txt = txt;
+    return storageService.put(NOTES_KEY, note)
 }
 
 function addNote(inputTxt, type) {
@@ -92,21 +100,21 @@ function createNotes() {
                     txt: "Fullstack Me Baby!"
                 },
                 style: {
-                    backgroundColor: "#ffffff"
+                    backgroundColor: "#1abc9c"
                 }
             },
-            {
-                id: utilService.makeId(),
-                type: "note-vid",
-                isPinned: false,
-                info: {
-                    url: 'https://www.youtube.com/embed?v=gThS-KfIxOs&t=2599s',
-                    txt: "Best Video EVER!"
-                },
-                style: {
-                    backgroundColor: "#ffffff"
-                }
-            },
+            // {
+            //     id: utilService.makeId(),
+            //     type: "note-vid",
+            //     isPinned: false,
+            //     info: {
+            //         url: 'https://www.youtube.com/watch?v=gThS-KfIxOs&t=2599s',
+            //         txt: "Best Video EVER!"
+            //     },
+            //     style: {
+            //         backgroundColor: "#ffffff"
+            //     }
+            // },
             {
                 id: utilService.makeId(),
                 type: "note-vid",
@@ -174,7 +182,7 @@ function getEmptyNote(isPinned = false) {
             txt: 'Enter Title'
         },
         style: {
-            backgroundColor: "#ffffff"
+            backgroundColor: "#1abc9c"
         }
     };
 }

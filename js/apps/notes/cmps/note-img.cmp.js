@@ -1,8 +1,10 @@
+import { eventBus } from '../../../cmps/services/eventBus-service.js';
+
 export default {
     props: ['note'],
     template: `
         <section>
-        <div contenteditable="true">{{note.info.txt}}</div>
+        <div @blur="saveTitle(note.id,$event)" contenteditable="true">{{note.info.txt}}</div>
             <img :src="note.info.url">
         </section>
     `,
@@ -11,7 +13,15 @@ export default {
         return {}
     },
     created() { },
-    methods: {},
+    methods: {
+        saveTitle(id, ev) {
+            // console.log(ev.currentTarget.textContent);
+            let textValue = ev.currentTarget.textContent;
+            console.log(id);
+            console.log(textValue);
+            eventBus.emit('saveTitle', { 'id': id, 'txt': textValue })
+        }
+    },
     computed: {
         // showImg() {
         //     return this.note.info.url

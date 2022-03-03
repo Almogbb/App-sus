@@ -1,13 +1,16 @@
 import noteImg from './note-img.cmp.js';
 import noteTxt from './note-txt.cmp.js';
 import noteVid from './note-video.cmp.js';
+// import noteEdit from './note-edit.cmp.js';
 
 export default {
     props: ['note'],
     template: `
         
-        <div class="note" :class="boldNote" :style="{'background-color':   fillColor}">
+        <div class="note" :class="boldNote" :style="{'background-color':fillColor}">
+        <!-- :style="{'background-color':fillColor}" -->
             <component :is="note.type" :note="note" ></component>
+            <!-- <note-edit :note="note" /> -->
             <div class="btn-group show-btn">
                 <button class="note-btn top-btn remove" @click="removeNote(note.id)">X</button>
                 <a class="note-btn bottom-btn pinned">
@@ -45,7 +48,8 @@ export default {
     components: {
         noteImg,
         noteTxt,
-        noteVid
+        noteVid,
+        // noteEdit,
     },
     created() { },
     data() {
