@@ -1,16 +1,19 @@
 export default {
-    props: ['user'],
+    props: ['user', ],
     template: `
-        <section class="user-preview ell">
+        <section :class="[user.isRead ? 'gray-bg' : 'bold white-bg','user-preview ell']">
            <router-link :to="'/mail/'+user.id"> {{user.name}}  |
             {{user.subject}} |
-            {{user.body}}  </router-link>
+            <span class="text-muted regular ">{{user.body}}</span>  </router-link>
+            <button @click="isRead" >{{user.isRead}}</button>
         </section>
     `,
     data() {
         return {}
     },
     methods: {
-
+        isRead() {
+            this.user.isRead = !this.user.isRead
+        }
     },
 }

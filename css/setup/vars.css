@@ -13,7 +13,11 @@
 }
 
 .dark-gray {
-    color: #95a5a6;
+    color: #F5F7F7;
+}
+
+.text-muted {
+    color: #999999;
 }
 
 .notice {
@@ -36,7 +40,7 @@
 }
 
 .gray-bg {
-    background-color: #2c3e50;
+    background-color: #F5F7F7;
 }
 
 .dark-gray-bg {

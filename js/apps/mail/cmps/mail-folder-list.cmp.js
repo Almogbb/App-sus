@@ -1,25 +1,28 @@
-import buttonCmp from "./button.cmp.js"
-
 export default {
-    // props: ['text'],
+    props: ['users'],
     template: `
-        <section class="mail-folder-list absolute">
-            
-        <p><button-cmp text="inbox"/></p>
-        <p><button-cmp text="Starred"/></p>
-        <p><button-cmp text="Snoozed"></p>
-        <p><button-cmp text="Sent"/></p>
-        <p><button-cmp text="Drafts"/></p>
-        <p><button-cmp text="Notes"/></p>
-
+        <section class="mail-folder-list absolute" >
+          
+            <p :key="type" v-for="button in buttons"><button @click="filterByFolder(button.type)">{{button.text}}</button></p>
         </section>
     `,
+    components: {},
     data() {
         return {
-            isClick: false
+            buttons: [
+                { type: 'Inbox', text: 'Inbox' },
+                { type: 'Starred', text: 'Starred' },
+                { type: 'Snoozed', text: 'Snoozed' },
+                { type: 'Send', text: 'Send' },
+                { type: 'Drafts', text: 'Drafts' },
+                { type: 'Notes', text: 'Notes' },
+            ],
+            isClick: false,
         }
     },
-    components: {
-        buttonCmp,
+    methods: {
+        filterByFolder(type) {
+            this.$emit('filteredByClick', type)
+        }
     },
 }

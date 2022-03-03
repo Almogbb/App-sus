@@ -32,7 +32,7 @@ function createUsers() {
         users = [{
                 id: utilService.makeId(),
                 name: 'Yaron',
-                type: 'Sent',
+                type: 'Send',
                 subject: 'Miss you!',
                 body: 'Would love to catch up sometimes',
                 isRead: false,
@@ -42,6 +42,7 @@ function createUsers() {
             {
                 id: utilService.makeId(),
                 name: 'Adam',
+                type: 'Inbox',
                 subject: 'Best product EVER',
                 body: 'I heard you are interested in our product',
                 isRead: false,
@@ -51,6 +52,7 @@ function createUsers() {
             {
                 id: utilService.makeId(),
                 name: 'Tamir',
+                type: 'Inbox',
                 subject: 'Microsoft HR',
                 body: 'About your job application',
                 isRead: false,
@@ -67,7 +69,8 @@ function createUsers() {
 function addMail(newMail) {
     const mail = _createMail()
     mail.info = newMail;
-    return storageService.post(NOTES_KEY, newMail)
+
+    return storageService.post(USERS_KEY, newMail)
 }
 
 function getEmptyUser() {

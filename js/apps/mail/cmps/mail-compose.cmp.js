@@ -3,9 +3,9 @@ export default {
         <section class="mail-compose">
         <form @Submit.prevent="onSubmit" class="compose-modal flex flex-col" v-if="openCompose">
             <label id="label-msg">New Message</label>
-        <input v-model="mail.to" type="text"  placeholder="To">
-        <input v-model="mail.subject" type="text"  placeholder="Subject">
-        <textarea v-model="mail.content"  name="content" style="height:313px" style="resize:none"></textarea>
+        <input v-model="newMail.to" type="text"  placeholder="To">
+        <input v-model="newMail.subject" type="text"  placeholder="Subject">
+        <textarea v-model="newMail.content"  name="content" style="height:313px" style="resize:none"></textarea>
         <button type="submit" value="Send">Send</button> </button>
         </form>
          <button @click="openModal">Compose</button>
@@ -19,6 +19,7 @@ export default {
                 to: '',
                 subject: '',
                 content: '',
+                type: 'Send',
             }
         }
     },
