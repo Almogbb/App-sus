@@ -1,22 +1,22 @@
-import notePreview from './notes-preview.cmp.js';
+import notesPreview from './notes-preview.cmp.js';
 import noteImg from './note-img.cmp.js';
-import noteVideo from './note-video.cmp.js';
+import noteVid from './note-video.cmp.js';
+import noteTxt from './note-txt.cmp.js';
 
 export default {
     props: ['notes'],
     template: `
         <section class="note-list">
             <article v-for="note in notes" :key="note.id" >
-                <!-- <component :is="note.type" :note="note"> </component> -->
-                <note-preview @duplicate="duplicate" @removeNote="removeNote" :note="note"/>
-            
+                <notes-preview @duplicate="duplicate" @removeNote="removeNote" :note="note"/>
             </article>
         </section>
     `,
     components: {
-        notePreview,
+        notesPreview,
         noteImg,
-        noteVideo
+        noteVid,
+        noteTxt
     },
     created() { },
     data() {

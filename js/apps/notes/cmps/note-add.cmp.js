@@ -9,8 +9,8 @@ export default {
             <div class="add-note-btn">
                 <button class="note-btn bottom-btn" @click="noteTypeTxt">Txt</button>
                 <button class="note-btn bottom-btn" @click="noteTypeVid">YT</button>
-                <button class="note-btn bottom-btn" @click="noteTypeImg">YT</button>
-                <button class="note-btn bottom-btn" @click="noteTypeToDo">YT</button>
+                <button class="note-btn bottom-btn" @click="noteTypeImg">IMG</button>
+                <button class="note-btn bottom-btn" @click="noteTypeToDo">todo</button>
             </div>
         </section>
     `,
@@ -19,30 +19,30 @@ export default {
     data() {
         return {
             inputTxt: '',
-            type: 'txt'
+            type: 'note-txt'
         }
     },
     methods: {
         addNote(inputTxt) {
             if (!inputTxt) return
             console.log(inputTxt);
-            this.$emit('addNote', this.inputTxt);
+            this.$emit('addNote', this.inputTxt, this.type);
             this.inputTxt = '';
         },
         noteTypeTxt() {
-            this.type = 'txt';
+            this.type = 'note-txt';
             console.log(this.type);
         },
         noteTypeVid() {
-            this.type = 'vid';
+            this.type = 'note-vid';
             console.log(this.type);
         },
         noteTypeImg() {
-            this.type = 'img';
+            this.type = 'note-img';
             console.log(this.type);
         },
         noteTypeToDo() {
-            this.type = 'todo';
+            this.type = 'note-todo';
             console.log(this.type);
         },
 
@@ -50,10 +50,10 @@ export default {
     computed: {
         placeHolderTxt() {
             // return this.type === 'txt' ? 'Add note...' : ''
-            if (this.type === 'txt') return 'Add note...'
-            else if (this.type === 'vid') return 'Enter video URL...'
-            else if (this.type === 'img') return 'Enter img URL...'
-            else if (this.type === 'todo') return 'Enter Todo list...'
+            if (this.type === 'note-txt') return 'Add note...'
+            else if (this.type === 'note-vid') return 'Enter video URL...'
+            else if (this.type === 'note-img') return 'Enter img URL...'
+            else if (this.type === 'note-todo') return 'Enter Todo list...'
         }
     },
 }

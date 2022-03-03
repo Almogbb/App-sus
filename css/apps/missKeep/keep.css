@@ -22,9 +22,17 @@
     text-align: center;
 }
 
+.note img{
+    width: 200px;
+}
+
+.note iframe{
+    width: 230px;
+}
+
 .note:hover{
     transition: ease-in-out 0.3s;
-    box-shadow: -3px -2px 3px;
+    box-shadow: -0px 0px 10px #000000;
 }
 
 .show-btn{
@@ -37,14 +45,18 @@
     width: 34px;
     height: 34px;
     margin: 3px;
-    background-color: white;
+    /* background-color: white; */
     border: 0;
     padding: 0;
     opacity: 0.87;
 }
 
-.bottom-btn:hover{
+.bottom-btn{
     border-radius: 50%;
+
+}
+
+.bottom-btn:hover{
     background-color: rgba(95,99,104,0.157);
 }
 
@@ -61,15 +73,18 @@
     height: 238px;
     height: 34px;
 }
-/* 
-.add-note{
-    position: relative;
-} */
+
+.btn-group>*{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .add-note-btn{
-    position: absolute;
-    right: 200px;
-    top: 25px;
+    position: relative;
+    z-index: 1;
+    right: -215px;
+    top: -62px;
 }
 
 .add-note input{
@@ -121,3 +136,76 @@
 .btn-group img{
     width: 12px;
 }
+
+.pos{
+    position: relative;
+}
+
+.clr-group{
+    position: absolute;
+    display: flex;
+    right: -35px;
+    bottom: -20px;
+    z-index: 1;
+}
+
+.clr-group>*{
+    margin: 1px;
+}
+
+.round{
+    width: 25px;
+    height: 25px;
+    background: red;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.light-grey{
+    background-color: #e8eaed;
+}
+.light-brown{
+    background-color: #e6c9a8;
+}
+.light-pink{
+    background-color:#fdcfe8;
+}
+.light-purple{
+    background-color:#d7aefb;
+}
+.blue{
+    background-color:#aecbfa;
+}
+.light-blue{
+    background-color:#cbf0f8;
+}
+.turquoise{
+    background-color:#a7ffeb
+    ;
+}
+.light-green{
+    background-color:#ccff90
+    ;
+}
+.yellow{
+    background-color: #fff475
+    ;
+}
+.orange{
+    background-color: #fbbc04
+    ;
+}
+.light-red{
+    background-color:#f28b82;
+}
+
+/* .grid-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-rows: auto;
+    grid-auto-flow: dense;
+    gap: 10px;
+    padding: 60px;
+    width: auto;
+    margin: 0 auto;
+} */

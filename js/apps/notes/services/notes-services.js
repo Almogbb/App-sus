@@ -36,10 +36,12 @@ function save(noteId) {
     else return storageService.post(NOTES_KEY, noteId);
 }
 
-function addNote(inputTxt) {
-
+function addNote(inputTxt, type) {
     const note = _createNote();
-    note.info.txt = inputTxt;
+    note.type = type;
+    if (note.type === 'note-txt') note.info.txt = inputTxt;
+    else if (note.type === 'note-img') note.info.url = inputTxt;
+    else if (note.type === 'note-vid') note.info.url = inputTxt;
     return storageService.post(NOTES_KEY, note)
 }
 
@@ -63,56 +65,86 @@ function createNotes() {
             {
                 id: utilService.makeId(),
                 type: "note-txt",
-                isPinned: true,
+                isPinned: false,
                 info: {
                     txt: "Fullstack Me Baby!"
+                },
+                style: {
+                    backgroundColor: "#ffffff"
                 }
             },
             {
                 id: utilService.makeId(),
                 type: "note-txt",
-                isPinned: true,
+                isPinned: false,
                 info: {
                     txt: "Fullstack Me Baby!"
+                },
+                style: {
+                    backgroundColor: "#ffffff"
                 }
             },
             {
                 id: utilService.makeId(),
                 type: "note-txt",
-                isPinned: true,
+                isPinned: false,
                 info: {
                     txt: "Fullstack Me Baby!"
+                },
+                style: {
+                    backgroundColor: "#ffffff"
                 }
             },
             {
                 id: utilService.makeId(),
                 type: "note-vid",
-                isPinned: true,
+                isPinned: false,
                 info: {
-                    txt: "Fullstack Me Baby!"
+                    url: 'https://www.youtube.com/embed?v=gThS-KfIxOs&t=2599s',
+                    txt: "Best Video EVER!"
+                },
+                style: {
+                    backgroundColor: "#ffffff"
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: "note-vid",
+                isPinned: false,
+                info: {
+                    url: 'https://upload.wikimedia.org/wikipedia/commons/transcoded/9/96/Curiosity%27s_Seven_Minutes_of_Terror.ogv/Curiosity%27s_Seven_Minutes_of_Terror.ogv.480p.vp9.webm',
+                    txt: 'Educational Video!'
+                },
+                style: {
+                    backgroundColor: "#ffffff"
                 }
             },
             {
                 id: utilService.makeId(),
                 type: "note-img",
+                isPinned: false,
                 info: {
                     // url: "http://some-img/me",
                     url: 'img/download.jpg',
-                    title: "Bobi and Me"
+                    txt: "Bobi and Me"
                 },
                 style: {
-                    backgroundColor: "#00d"
+                    backgroundColor: "#ffffff"
                 }
             },
             {
                 id: utilService.makeId(),
                 type: "note-todos",
+                isPinned: false,
                 info: {
-                    label: "Get my stuff together",
+                    txt: "Get my stuff together",
                     todos: [
                         { txt: "Driving liscence", doneAt: null },
                         { txt: "Coding power", doneAt: 187111111 }
                     ]
+                },
+                style: {
+                    backgroundColor: "#ffffff"
                 }
             })
         utilService.saveToStorage(NOTES_KEY, notes);
@@ -123,10 +155,14 @@ function createNotes() {
 function getEmptyNote(isPinned = false) {
     return {
         id: '',
-        type: "note-txt",
+        // type: "note-txt",
+        type: '',
         isPinned,
         info: {
-            txt: ''
+            txt: 'Enter Title'
+        },
+        style: {
+            backgroundColor: "#ffffff"
         }
     };
 }
