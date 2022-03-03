@@ -134,6 +134,18 @@ function createNotes() {
             },
             {
                 id: utilService.makeId(),
+                type: "note-vid",
+                isPinned: false,
+                info: {
+                    url: 'https://upload.wikimedia.org/wikipedia/commons/transcoded/e/eb/Wood_cleaving_-_2016.webm/Wood_cleaving_-_2016.webm.480p.vp9.webm',
+                    txt: 'WOoWOWOWOWOWOWowowWWW'
+                },
+                style: {
+                    backgroundColor: "#ffffff"
+                }
+            },
+            {
+                id: utilService.makeId(),
                 type: "note-todos",
                 isPinned: false,
                 info: {
