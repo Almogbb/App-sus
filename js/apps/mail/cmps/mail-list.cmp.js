@@ -1,12 +1,12 @@
 import mailPreview from "./mail-preview.cmp.js"
 
 export default {
-    props: ['users'],
+    props: ['mails'],
     template: `
         <section class="main-list margin-left">
             <ul class="mail-list">
-                <li v-for="user in users" :key="user.id">
-                   <mail-preview :user="user" @selectUser="selectUser(user)" /> 
+                <li v-for="mail in mails" :key="mail.id">
+                   <mail-preview :mail="mail" @sendMailToArchive="sendMailToArchives(mail.id)" @selectUser="selectMail(mail)" /> 
                 </li>
             </ul>
         </section>
@@ -20,8 +20,11 @@ export default {
     },
     created() {},
     methods: {
-        selectUser(user) {
-            this.$emit('selectUser', user)
+        selectUser(mail) {
+            this.$emit('selectMail', mail)
+        },
+        sendMailToArchives(mailId) {
+            this.$emit('sendMailToArchived', mailId)
         }
     },
     computed: {},

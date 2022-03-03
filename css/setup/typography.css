@@ -1,5 +1,23 @@
+@font-face {
+    font-family: roboto;
+    src: url(../../fonts/Roboto/Roboto-BoldItalic.ttf);
+}
+
+@font-face {
+    font-family: open-sans;
+    src: url(../../fonts/Open_Sans/OpenSans-VariableFont_wdth\,wght.ttf);
+}
+
 .bold {
     font-weight: bold;
+}
+
+.open-sans {
+    font-family: open-sans;
+}
+
+.open-sans-sarif {
+    font-family: 'Open Sans', sans-serif;
 }
 
 .regular {

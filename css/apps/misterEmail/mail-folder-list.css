@@ -1,8 +1,16 @@
-.mail-folder-list {
-    max-width: 256px;
-    padding: 16px;
+.btn:hover {
+    border: none;
+    border-left: unset;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: #E8EAED;
 }
 
-.mail-folder-list p {
-    padding: 16px;
+.btn img {
+    width: 20px;
+    height: 20px;
+}
+
+img:hover {
+    cursor: pointer;
 }

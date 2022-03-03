@@ -11,9 +11,9 @@ export default {
     template: `
         <section class="mail-index">
             <mail-compose @sendMail="sendMail" />
-            <mail-folder-list  @filteredByClick="filterByClick" :users="users" />
+            <mail-folder-list  @filteredByClick="filterByClick" :mails="mails" />
             <mail-filter @filtered="setFilter" />
-            <mail-list :users="filteredUsers" />
+            <mail-list @sendMailToArchived="sendMailToArchive" :mails="filteredMails" />
         </section>
     `,
     components: {
@@ -24,20 +24,21 @@ export default {
     },
     data() {
         return {
-            users: [],
+            mails: [],
             filterBy: null,
             sentFil: null,
-            filteredUsers: [],
+            filteredMails: [],
         }
     },
     created() {
-        this.getUsers()
+        this.getMails()
     },
     watch: {
-        filteredUsers: {
+        filteredMails: {
+            immediate: true,
             handler(newValue, oldValue) {
                 if (newValue) {
-                    this.filteredUsers = newValue
+                    this.filteredMails = newValue
                 }
                 // Note: `newValue` will be equal to `oldValue` here
                 // on nested mutations as long as the object itself
@@ -48,38 +49,42 @@ export default {
     },
 
     methods: {
-        getUsers() {
+        getMails() {
             mailService.query()
-                .then(users => {
-                    this.users = users;
-                    this.filteredUsers = users;
+                .then(mails => {
+                    this.mails = mails;
+                    this.filteredMails = mails.filter((mail) => mail.type === 'Inbox')
                 });
         },
         setFilter(filterBy) {
             this.filterBy = filterBy;
         },
         filterByClick(type) {
-            this.filteredUsers = this.users.filter((user) => user.type === type)
+            this.filteredMails = this.mails.filter((mail) => mail.type === type)
         },
         sendMail(newMail) {
             mailService.addMail(newMail)
-                .then(newMail => this.users.push(newMail))
+                .then(mail => this.mails.push(mail))
         },
+        sendMailToArchive(mailId) {
+            mailService.save(mailId, this.mails)
+                // .then(archive => console.log(archive))
+
+        }
     },
     computed: {
-        usersToShow() {
-            if (!this.filterBy) return this.users;
+        mailsToShow() {
+            if (!this.filterBy) return this.mails;
             const regex = new RegExp(this.filterBy.name, 'i');
-            return this.users.filter((user) =>
-                regex.test(user.name)
+            let mails = this.mails;
+            mails = this.mails.filter((mail) =>
+                regex.test(mail.name)
             )
 
         },
-        sentMail() {
-            return this.users.filter((user) => {
-                console.log(user.type);
-            })
-        },
+
+
+
 
     },
     unmounted() {},

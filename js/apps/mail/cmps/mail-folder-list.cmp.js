@@ -1,21 +1,21 @@
 export default {
-    props: ['users'],
+    props: ['mails'],
     template: `
         <section class="mail-folder-list absolute" >
-          
-            <p :key="type" v-for="button in buttons"><button @click="filterByFolder(button.type)">{{button.text}}</button></p>
+            <div :key="button" v-for="button in buttons">
+                
+                <button class="btn regular"  @click="filterByFolder(button.type)"> <img :src="button.src" alt=""> {{button.text}}</button>
+            </div>
         </section>
     `,
     components: {},
     data() {
         return {
             buttons: [
-                { type: 'Inbox', text: 'Inbox' },
-                { type: 'Starred', text: 'Starred' },
-                { type: 'Snoozed', text: 'Snoozed' },
-                { type: 'Send', text: 'Send' },
-                { type: 'Drafts', text: 'Drafts' },
-                { type: 'Notes', text: 'Notes' },
+                { type: 'Inbox', text: 'Inbox', src: './icon/inbox.png' },
+                { type: 'Starred', text: 'Starred', src: './icon/unstarred.png' },
+                { type: 'Send', text: 'Sent', src: './icon/sent.png' },
+                { type: 'Archive', text: 'Archive', src: './icon/archive.png' },
             ],
             isClick: false,
         }

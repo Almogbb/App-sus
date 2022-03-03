@@ -1,7 +1,7 @@
 import { utilService } from '../../../cmps/services/util-service.js';
 import { storageService } from '../../../cmps/services/async-storage-service.js';
 
-const USERS_KEY = 'mailUsersDB';
+const MAILS_KEY = 'mailUsersDB';
 
 
 export const mailService = {
@@ -9,30 +9,32 @@ export const mailService = {
     get,
     save,
     addMail,
+    sendMailToArchive,
 }
 
-createUsers();
+createMails();
 
 function query() {
-    return storageService.query(USERS_KEY);
+    return storageService.query(MAILS_KEY);
 }
 
-function get(userId) {
-    return storageService.get(USERS_KEY, userId)
+function get(mailId) {
+    return storageService.get(MAILS_KEY, mailId)
 }
 
 function save(mail) {
-    if (mail.id) return storageService.put(USERS_KEY, mail);
-    else return storageService.post(USERS_KEY, mail);
+    if (mail.id) return storageService.put(MAILS_KEY, mail);
+    else return storageService.post(MAILS_KEY, mail);
 }
 
-function createUsers() {
-    let users = utilService.loadFromStorage(USERS_KEY);
-    if (!users || !users.length) {
-        users = [{
+function createMails() {
+    let mails = utilService.loadFromStorage(MAILS_KEY);
+    const date = new Date(Date.now());
+    if (!mails || !mails.length) {
+        mails = [{
                 id: utilService.makeId(),
                 name: 'Yaron',
-                type: 'Send',
+                type: 'Inbox',
                 subject: 'Miss you!',
                 body: 'Would love to catch up sometimes',
                 isRead: false,
@@ -58,28 +60,63 @@ function createUsers() {
                 isRead: false,
                 sentAt: 1551133930594,
                 to: 'momo@momo.com'
+            },
+            {
+                id: utilService.makeId(),
+                name: 'Send',
+                type: 'Send',
+                subject: 'Microsoft HR',
+                body: 'About your job application',
+                isRead: false,
+                sentAt: 1551133930594,
+                date: date.toLocaleString('en-US', { month: 'short', day: 'numeric' }),
+
+                to: 'momo@momo.com'
             }
         ]
-        utilService.saveToStorage(USERS_KEY, users)
+        utilService.saveToStorage(MAILS_KEY, mails)
     }
-    console.log(users);
-    return users
+    console.log(mails);
+    return mails
 }
 
 function addMail(newMail) {
     const mail = _createMail()
-    mail.info = newMail;
+    mail.id = newMail;
 
-    return storageService.post(USERS_KEY, newMail)
+    return storageService.post(MAILS_KEY, newMail)
+}
+
+// function sendMailToArchive(mailId, mails) {
+//     const mailIdx = mails.findIndex(mail => mail.id === mailId);
+//     return mails.map((mail) => {
+//         if (mail === mailId) {
+//             console.log(mail);
+//         }
+//     })
+
+//     // return storageService.put(MAILS_KEY, mails);
+// }
+
+function sendMailToArchive(mailId, mails) {
+    const mailIdx = mails.find(mail => mail.id === mailId);
+    mails.splice(mailIdx, 1);
+    mailIdx.type = 'Archive'
+    mails.push(mailIdx);
+    console.log(mails);
+    return utilService.save(MAILS_KEY, mails);
 }
 
 function getEmptyUser() {
+    const date = new Date(Date.now());
+
     return {
         name: '',
         subject: '',
         body: '',
         isRead: false,
         sentAt: 1551133930594,
+        date: date.toLocaleString('en-US', { month: 'short', day: 'numeric' }),
         to: 'momo@momo.com'
     }
 }
