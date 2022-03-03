@@ -67,8 +67,8 @@ export default {
                 .then(mail => this.mails.push(mail))
         },
         sendMailToArchive(mailId) {
-            mailService.save(mailId, this.mails)
-                // .then(archive => console.log(archive))
+            mailService.sendMailToArchive(mailId, this.mails)
+                .then(mail => this.getMails())
 
         }
     },
