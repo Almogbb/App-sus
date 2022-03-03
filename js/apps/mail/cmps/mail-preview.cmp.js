@@ -1,5 +1,5 @@
 export default {
-    props: ['mail', ],
+    props: ['mail'],
     template: `
         <section :class="[mail.isdRead ? 'gray-bg' : 'bold open-sans white-bg','mail-preview ell']">
             <!-- <span> -->
@@ -13,11 +13,13 @@ export default {
                                 {{mail.date}}
                             </span>
                             </router-link>
-                        <span @click="click(mail.id)">
+                            <span  v-if="mail.type === 'Archive'"  @click="deleteArchive(mail.id)">
+                                <img src="../icon/delete.png" width="20" height="20" alt="">
+                            </span>
+                        <span v-else @click="sendToArchive(mail.id)">
                             <img src="../icon/archive.png" width="20" height="20" alt="">
                         </span>
                             <span>
-
                                 <img :src="changeSource" width="20" height="20" alt="" @click="imgClicked = !imgClicked">
                             </span> 
                     </div>
@@ -37,8 +39,13 @@ export default {
         isRead() {
             this.mail.isRead = !this.mail.isRead
         },
-        click(mailId) {
+        sendToArchive(mailId) {
+            console.log('something archive');
             this.$emit('sendMailToArchive', mailId)
+        },
+        deleteArchive(mailId) {
+            console.log('something delete');
+            this.$emit('deleteArchive', mailId)
         }
     },
     computed: {
