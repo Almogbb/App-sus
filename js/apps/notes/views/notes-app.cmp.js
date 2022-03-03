@@ -4,6 +4,7 @@ import notesList from '../cmps/notes-list.cmp.js';
 import noteAdd from '../cmps/note-add.cmp.js';
 
 
+
 export default {
 
     template: `
@@ -15,6 +16,7 @@ export default {
     components: {
         notesList,
         noteAdd,
+
     },
     data() {
         return {

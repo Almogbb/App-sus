@@ -3,15 +3,16 @@
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .note{
-    height: 104px;
+    position: relative;
+    min-height: 104px;
     width: 240px;
     padding: 5px;
     margin-right: 9px;
     margin-bottom: 10px;
-    /* background-color: rgb(230, 98, 98); */
     border: 1px solid rgb(223, 218, 218);
     color: #333;
     display: flex;
@@ -20,33 +21,59 @@
     border-radius: 10px;
     text-align: center;
 }
+
 .note:hover{
-    transition: all 0.5s;
-    box-shadow: -4.5px 4.5px 0;
+    transition: ease-in-out 0.3s;
+    box-shadow: -3px -2px 3px;
 }
 
 .show-btn{
     opacity: 0;
+    transition: ease-in-out 0.3s;
 }
 
 .note-btn{
     cursor: pointer;
     width: 34px;
     height: 34px;
+    margin: 3px;
+    background-color: white;
+    border: 0;
+    padding: 0;
+    opacity: 0.87;
+}
+
+.bottom-btn:hover{
+    border-radius: 50%;
+    background-color: rgba(95,99,104,0.157);
 }
 
 .show-btn:hover{
+    transition: ease-in-out 0.3s;
     cursor: pointer;
     opacity: 1;
 }
 
 
 .btn-group{
+    display: flex;
+    justify-content: space-evenly;
     height: 238px;
     height: 34px;
 }
+/* 
+.add-note{
+    position: relative;
+} */
+
+.add-note-btn{
+    position: absolute;
+    right: 200px;
+    top: 25px;
+}
 
 .add-note input{
+    position: relative;
     font-size: 1.1em;
     margin: 20px;
     width: 596px;
@@ -62,6 +89,35 @@
     min-height: 80vh;
 }
 
+.boldNote{
+    border: 3px solid black; 
+}
 
+.mark-highlight{
+    background: rgb(119, 114, 114);
+    color: white;
+}
 
+.remove{
+    position: absolute;
+    left: 2px;
+    border-radius: 10px;
+    
+}
 
+.top-btn{
+    top: 0;
+    height: fit-content;
+    width: fit-content;
+}
+
+.mark{
+    position: absolute;
+    right: 2px;
+    font-size: .700em;
+    border-radius: 50%;
+}
+
+.btn-group img{
+    width: 12px;
+}
