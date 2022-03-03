@@ -6,7 +6,7 @@ export default {
     props: ['note'],
     template: `
         
-        <div class="note" :class="boldNote" :style="{backgroundColor:   fillColor}">
+        <div class="note" :class="boldNote" :style="{'background-color':   fillColor}">
             <component :is="note.type" :note="note" ></component>
             <div class="btn-group show-btn">
                 <button class="note-btn top-btn remove" @click="removeNote(note.id)">X</button>
