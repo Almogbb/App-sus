@@ -2,8 +2,9 @@ export default {
     props: ['note'],
     template: `
         <section>
-            <p>{{note.id}} </p>
-            <iframe src="https://www.w3schools.com" title="W3Schools Free Online Web Tutorials"></iframe>
+            <div contenteditable="true">{{note.info.txt}}</div>
+            <iframe :src="note.info.url" width="100%"
+            height="100"></iframe>
         </section>
     `,
     components: {},
@@ -13,5 +14,17 @@ export default {
     created() { },
     methods: {},
     computed: {},
-    unmounted() { },
 }
+
+
+// {
+//     id: utilService.makeId(),
+//     type: "note-vid",
+//     isPinned: false,
+//     info: {
+//         txt: "Best Video EVER!"
+//     },
+//     style: {
+//         backgroundColor: "#ffffff"
+//     }
+// },

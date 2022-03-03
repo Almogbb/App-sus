@@ -28,8 +28,8 @@ export default {
             .then(notes => this.notes = notes)
     },
     methods: {
-        getNote(inputTxt) {
-            notesService.addNote(inputTxt)
+        getNote(inputTxt, type) {
+            notesService.addNote(inputTxt, type)
                 .then(note => {
                     this.notes.push(note)
                     // eventBus.emit('show-msg', { txt: 'added', type: 'success' })

@@ -1,9 +1,9 @@
 export default {
     props: ['note'],
     template: `
-        <section class="note">
-            <p>{{note.info.title}}</p>
-            <img src="note.info.url">
+        <section>
+        <div contenteditable="true">{{note.info.txt}}</div>
+            <img :src="note.info.url">
         </section>
     `,
     components: {},
@@ -13,9 +13,9 @@ export default {
     created() { },
     methods: {},
     computed: {
-        showImg() {
-            return 'note.info.url'
-        }
+        // showImg() {
+        //     return this.note.info.url
+        // }
     },
 
 }
