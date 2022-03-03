@@ -6,7 +6,7 @@ export default {
         <section class="main-list margin-left">
             <ul class="mail-list">
                 <li v-for="mail in mails" :key="mail.id">
-                   <mail-preview :mail="mail" @sendMailToArchive="sendMailToArchives(mail.id)" @selectUser="selectMail(mail)" /> 
+                   <mail-preview :mail="mail" @deleteArchive="deleteArchived" @sendMailToArchive="sendMailToArchives(mail.id)" @selectUser="selectMail(mail)" /> 
                 </li>
             </ul>
         </section>
@@ -25,7 +25,11 @@ export default {
         },
         sendMailToArchives(mailId) {
             this.$emit('sendMailToArchived', mailId)
+        },
+        deleteArchived(mailId) {
+            this.$emit('deleteArchive', mailId)
         }
+
     },
     computed: {},
     unmounted() {},

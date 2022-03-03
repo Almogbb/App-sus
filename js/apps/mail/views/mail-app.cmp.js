@@ -13,7 +13,7 @@ export default {
             <mail-compose @sendMail="sendMail" />
             <mail-folder-list  @filteredByClick="filterByClick" :mails="mails" />
             <mail-filter @filtered="setFilter" />
-            <mail-list @sendMailToArchived="sendMailToArchive" :mails="filteredMails" />
+            <mail-list @deleteArchive="deleteArchived" @sendMailToArchived="sendMailToArchive" :mails="filteredMails" />
         </section>
     `,
     components: {
@@ -53,7 +53,7 @@ export default {
             mailService.query()
                 .then(mails => {
                     this.mails = mails;
-                    this.filteredMails = mails.filter((mail) => mail.type === 'Inbox')
+                    this.filteredMails = mails.filter((mail) => mail.type === 'Inbox' && 'ALL')
                 });
         },
         setFilter(filterBy) {
@@ -69,6 +69,19 @@ export default {
         sendMailToArchive(mailId) {
             mailService.sendMailToArchive(mailId, this.mails)
                 .then(mail => this.getMails())
+
+        },
+        // deleteArchived(mailId) {
+        //     mailService.removeArchive(mailId, this.mails)
+        //         .then(mail => this.mails.slice(mail, 1))
+        // },
+        // deleteArchived(mailId) {
+        //     mailService.removeArchive(mailId, this.mails)
+        //         .then(mail)
+        // },
+        deleteArchived(mailId) {
+            mailService.remove(mailId)
+                .then(this.getMails)
 
         }
     },

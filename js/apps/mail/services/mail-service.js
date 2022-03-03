@@ -9,7 +9,9 @@ export const mailService = {
     get,
     save,
     addMail,
+    remove,
     sendMailToArchive,
+    removeArchive,
 }
 
 createMails();
@@ -25,6 +27,10 @@ function get(mailId) {
 function save(mail) {
     if (mail.id) return storageService.put(MAILS_KEY, mail);
     else return storageService.post(MAILS_KEY, mail);
+}
+
+function remove(mailId) {
+    return storageService.remove(MAILS_KEY, mailId);
 }
 
 function createMails() {
@@ -87,24 +93,25 @@ function addMail(newMail) {
     return storageService.post(MAILS_KEY, newMail)
 }
 
-// function sendMailToArchive(mailId, mails) {
-//     const mailIdx = mails.findIndex(mail => mail.id === mailId);
-//     return mails.map((mail) => {
-//         if (mail === mailId) {
-//             console.log(mail);
-//         }
-//     })
-
-//     // return storageService.put(MAILS_KEY, mails);
-// }
 
 function sendMailToArchive(mailId, mails) {
     const mailIdx = mails.find(mail => mail.id === mailId);
     mailIdx.type = 'Archive'
-        // mails.push(mailIdx);
-        // return Promise.resolve(mails)
     return storageService.put(MAILS_KEY, mailIdx);
 }
+
+// function removeArchive(mailId, mails) {
+//     const mailIdx = mails.findIndex(mail => mail.id === mailId);
+//     mails.splice(mailIdx, 1);
+//     return storageService.remove(mailIdx)
+// }
+
+function removeArchive(mailId, mails) {
+    const mailIdx = mails.findIndex(mail => mail.id === mailId);
+    mails.splice(mailIdx, 1);
+    return utilService.saveToStorage(MAILS_KEY, mails);
+}
+
 
 function getEmptyUser() {
     const date = new Date(Date.now());
