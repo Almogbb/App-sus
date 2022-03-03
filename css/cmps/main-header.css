@@ -3,4 +3,6 @@
     background-color: lightgrey;
     display: flex;
     align-items: center;
+    padding-inline-end: 60px;
+    padding-inline-start: 60px;
 }

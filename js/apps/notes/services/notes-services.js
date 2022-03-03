@@ -32,8 +32,8 @@ function get(notesId) {
 }
 
 function save(noteId) {
-    if (car.id) return storageService.put(NOTES_KEY, car);
-    else return storageService.post(NOTES_KEY, car);
+    if (car.id) return storageService.put(NOTES_KEY, noteId);
+    else return storageService.post(NOTES_KEY, noteId);
 }
 
 function addNote(inputTxt) {
@@ -44,10 +44,7 @@ function addNote(inputTxt) {
 }
 
 function removeNote(id, notes) {
-    // console.log(id);
-    // console.log(notes);
     const noteIdx = notes.findIndex(note => note.id === id);
-    console.log(noteIdx);
     notes.splice(noteIdx, 1);
     return utilService.saveToStorage(NOTES_KEY, notes);
 }
@@ -89,7 +86,7 @@ function createNotes() {
             },
             {
                 id: utilService.makeId(),
-                type: "note-txt",
+                type: "note-vid",
                 isPinned: true,
                 info: {
                     txt: "Fullstack Me Baby!"
@@ -99,7 +96,8 @@ function createNotes() {
                 id: utilService.makeId(),
                 type: "note-img",
                 info: {
-                    url: "http://some-img/me",
+                    // url: "http://some-img/me",
+                    url: 'img/download.jpg',
                     title: "Bobi and Me"
                 },
                 style: {

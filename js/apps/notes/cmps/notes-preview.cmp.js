@@ -1,32 +1,31 @@
-
+import noteImg from './note-img.cmp.js';
 
 export default {
     props: ['note'],
     template: `
-        <section>
-            <div class="note " >
-                <button class="note-btn" @click="removeNote(note.id)">X</button>
-                <button class="note-btn pinned">+</button>
-                
-                <div contenteditable="true">
-                    <!-- <components is></components> -->
-                    {{note.info.txt}}
-                </div>
+        <section class="note-preview">
+            <div class="note" :class="boldNote">
+                <div contenteditable="true">{{note.info.txt}}</div>
                 <div class="btn-group show-btn">
-                    <button class="note-btn" @click="duplicate(note.id)">Dup</button>
-                    <button class="note-btn">img</button>
-                    <button class="note-btn">img</button>
-                    <button class="note-btn">img</button>
-                    <button class="note-btn">img</button>
+                    <button class="note-btn top-btn remove" @click="removeNote(note.id)">X</button>
+                    <button class="note-btn bottom-btn pinned">
+                        <img src="icon/pin.png"></button>
+                    <button title="mark note" class="note-btn top-btn mark" :class="markBtn" @click="highLightNote"><img src="icon/check.png"></button>
+                    <button class="note-btn bottom-btn duplicate" @click="duplicate(note.id)"><img src="icon/duplicate.png"></button>
+                    <button class="note-btn bottom-btn">img</button>
+                    <button class="note-btn bottom-btn">img</button>
+                    <button class="note-btn bottom-btn">img</button>
                 </div>
             </div>
         </section>
     `,
-    components: {},
+    components: {
+        noteImg
+    },
     created() { },
     data() {
         return {
-
+            isHighLight: false,
         }
     },
     methods: {
@@ -36,10 +35,19 @@ export default {
         },
         duplicate(id) {
             this.$emit('duplicate', id)
+        },
+        highLightNote() {
+            this.isHighLight = !this.isHighLight;
+            console.log(this.isHighLight);
         }
     },
     computed: {
-
+        boldNote() {
+            return { boldNote: this.isHighLight, }
+        },
+        markBtn() {
+            return { 'mark-highlight': this.isHighLight }
+        }
     },
 
 }
