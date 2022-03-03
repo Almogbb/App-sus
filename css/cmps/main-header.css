@@ -1,8 +1,26 @@
-.main-header{
-    height: 10vh;
-    background-color: lightgrey;
+.header-inner {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    max-width: 1140px;
+    height: 10vh;
+    margin: 0 auto;
+    background-color: lightgrey;
     padding-inline-end: 60px;
     padding-inline-start: 60px;
+}
+
+header ul li {
+    display: inline-block;
+    margin: 0 25px;
+}
+
+header ul li:last-child {
+    margin-right: 0;
+}
+
+header ul li a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #2c3e50;
 }
