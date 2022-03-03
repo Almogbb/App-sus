@@ -100,11 +100,10 @@ function addMail(newMail) {
 
 function sendMailToArchive(mailId, mails) {
     const mailIdx = mails.find(mail => mail.id === mailId);
-    mails.splice(mailIdx, 1);
     mailIdx.type = 'Archive'
-    mails.push(mailIdx);
-    console.log(mails);
-    return utilService.save(MAILS_KEY, mails);
+        // mails.push(mailIdx);
+        // return Promise.resolve(mails)
+    return storageService.put(MAILS_KEY, mailIdx);
 }
 
 function getEmptyUser() {

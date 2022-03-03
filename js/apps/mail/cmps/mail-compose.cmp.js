@@ -1,15 +1,15 @@
 export default {
-    // props: ['mail'],
+    props: ['mail'],
     template: `
         <section class="mail-compose">
-        <form @submit.prevent="onSubmit" v-if="openCompose" class="compose-modal flex flex-col">
-        <label id="label-msg"for="fname">New Message</label>
-        <input type="text" v-model="newMail.to" placeholder="To">
-        <input type="text" v-model="newMail.subject" placeholder="Subject">
-        <textarea v-model="newMail.content" placeholder="Write something.." style="height:200px" style="resize:none"></textarea>
-      <input id="compose-btn" type="submit" value="Send">
-        </form>
-         <button  @click="openModal">Compose</button>
+            <form @submit.prevent="onSubmit" v-if="openCompose" class="compose-modal flex flex-col">
+                    <label id="label-msg" for="fname">New Message</label>
+                    <input type="text" v-model="newMail.to" placeholder="To">
+                    <input type="text" v-model="newMail.subject" placeholder="Subject">
+                    <textarea v-model="newMail.content" placeholder="Write something.." style="resize:none"></textarea>
+                   <input id="compose-btn" type="submit" value="Send">
+            </form>
+            <button  @click="openModal">Compose</button>
         </section>
     `,
     data() {
