@@ -39,7 +39,7 @@ export default {
         <!-- <pre>
                 - FIX EVENT BUS FOR NOTE WHEN REMOVE AND MORE
                 - try to fix vid
-                - FIX ENTER TITLE FOR VID AND IMG
+                - FIX ENTER TITLE FOR VID AND IMG - DONE
                 - FIX X, V, PIN, CLR INSIDE NOTE 
     
             </pre> -->

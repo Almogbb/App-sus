@@ -7,10 +7,10 @@ export default {
             <input v-model="inputTxt" type="text" @blur="addNote(inputTxt)"
             :placeholder="[[placeHolderTxt]]">
             <div class="add-note-btn">
-                <button class="note-btn bottom-btn" @click="noteTypeTxt">Txt</button>
-                <button class="note-btn bottom-btn" @click="noteTypeVid">YT</button>
-                <button class="note-btn bottom-btn" @click="noteTypeImg">IMG</button>
-                <button class="note-btn bottom-btn" @click="noteTypeToDo">todo</button>
+                <button class="note-btn" @click="noteTypeTxt"><img src="icon/font.png"></button>
+                <button class="note-btn" @click="noteTypeVid"><img src="icon/youtube.png"></button>
+                <button class="note-btn" @click="noteTypeImg"><img src="icon/picture.png"></button>
+                <button class="note-btn" @click="noteTypeToDo"><img src="icon/menu.png"></button>
             </div>
         </section>
     `,
@@ -50,10 +50,10 @@ export default {
     computed: {
         placeHolderTxt() {
             // return this.type === 'txt' ? 'Add note...' : ''
-            if (this.type === 'note-txt') return 'Add note...'
+            if (this.type === 'note-txt') return 'Enter note...'
             else if (this.type === 'note-vid') return 'Enter video URL...'
-            else if (this.type === 'note-img') return 'Enter img URL...'
-            else if (this.type === 'note-todo') return 'Enter Todo list...'
+            else if (this.type === 'note-img') return 'Enter image URL...'
+            else if (this.type === 'note-todo') return 'Enter todo list...'
         }
     },
 }
