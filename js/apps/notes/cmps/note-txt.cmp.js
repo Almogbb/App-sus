@@ -5,7 +5,7 @@ export default {
     props: ['note'],
     template: `
         <section>
-            <div @blur="saveTitle(note.id,$event)" contenteditable="true">{{note.info.txt}}</div>
+            <div class="title" @blur="saveTitle(note.id,$event)" contenteditable="true">{{note.info.txt}}</div>
 
         </section>
     `,
