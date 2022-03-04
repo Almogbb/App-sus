@@ -53,25 +53,15 @@ function saveClr(id, notes) {
 }
 
 function markTodo(todoId, noteId) {
-    storageService.get(NOTES_KEY, noteId)
+    return storageService.get(NOTES_KEY, noteId)
         .then(note => {
-
-
             const todo = note.info.todos.find(todo => todo.id === todoId);
+            // console.log(todo);
+            // if(todo.doneAt)
+            todo.doneAt = todo.doneAt ? null : Date.now();
+            // console.log(todo.doneAt);
             console.log(todo);
-            todo.doneAt = todo.doneAt ? Date.now() : null
-            console.log(todo.doneAt);
-
-            // note.info.todos[todoIdx].doneAt = !note.info.todos[todoIdx].doneAt ? Date.now() : null;
-
-            // const todo = note.info.todos[todoIdx].doneAt;
-
-            return storageService.put(NOTES_KEY, note)
-
-            // todo = !todo.doneAt ? Date.now() : null;
-            // console.log(todoIdx);
-            // console.log(note);
-            // return 
+            return storageService.put(NOTES_KEY, note);
         })
 }
 
@@ -90,20 +80,17 @@ function addNote(inputTxt, type) {
     else if (note.type === 'note-vid') note.info.url = inputTxt;
     else if (note.type === 'note-todos') {
         if (inputTxt.includes(',')) {
-            // var todos = [...inputTxt.split(',')]
-            var todos = [...inputTxt]
+            var todos = [...inputTxt.split(',')]
+            // var todos = [...inputTxt]
             console.log(todos);
-            for (let i = 0; i < todos.length; i++) {
-                if (inputTxt[i] === ',') continue
+            todos.map(task => {
                 note.info.todos.push({
-                    id: utilService.makeId(), txt: inputTxt[i], doneAt: ''
+                    id: utilService.makeId(), txt: task, doneAt: ''
                 })
-            }
+            })
             return storageService.post(NOTES_KEY, note);
         }
     }
-    // console.log(type);
-    console.log('done');
     return storageService.post(NOTES_KEY, note)
 }
 

@@ -6,7 +6,7 @@ export default {
         <section>
         <div class="title" @blur="saveTitle(note.id,$event)" contenteditable="true">{{note.info.txt}}</div>
             <ul>
-                <li @click="toggleCheck(todo.id,note.id)" v-for="(todo,idx) in note.info.todos" :class="markTodo" class="todoLine"> 
+                <li @click="toggleCheck(todo.id,note.id)" v-for="(todo,idx) in note.info.todos" :key="todo.id" :style="todo.doneAt? 'text-decoration: line-through':''" class="todoLine"> 
                     {{todo.txt}}
                 </li>
             </ul>
@@ -17,18 +17,20 @@ export default {
     data() {
         return {
             isCheck: false,
+            id: null,
+            todo: ''
         }
     },
     created() { },
     methods: {
         toggleCheck(todoId, noteId) {
-            this.isCheck = !this.isCheck
+            this.isCheck = !this.isCheck;
             eventBus.emit('doneToDo', { todoId, noteId })
         }
     },
     computed: {
         markTodo() {
-            return { check: this.isCheck }
+
         }
     },
     unmounted() { },

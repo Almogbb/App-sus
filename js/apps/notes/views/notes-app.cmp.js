@@ -32,8 +32,9 @@ export default {
         }
     },
     created() {
-        notesService.query()
-            .then(notes => this.notes = notes);
+        this.getNotes()
+        // notesService.query()
+        //     .then(notes => this.notes = notes);
         // notesService.query()
         //     .then(notes => {
         //         this.pinnedNotes = notes.filter(note => note.isPinned)
@@ -42,18 +43,21 @@ export default {
 
         this.unsubscribe = eventBus.on('saveTitle', this.saveTitle);
         this.saveClr = eventBus.on('changeClr', this.saveClr);
-        this.unsub = eventBus.on('pinned', this.pinNote);
-        this.toDo = eventBus.on('doneToDo', this.checkTodo);
+        this.doneTodo = eventBus.on('doneToDo', this.markTodo);
     },
     methods: {
+        getNotes() {
+            notesService.query()
+                .then(notes => this.notes = notes)
+        },
         addNote(inputTxt, type) {
             notesService.addNote(inputTxt, type)
                 .then(note => {
-                    console.log(note);
+                    // console.log(note);
                     this.notes.push(note);
                     // eventBus.emit('show-msg', { txt: 'added', type: 'success' })
                 })
-            this.isAddReview = null
+            // this.isAddReview = null
         },
         removeNote(id) {
             console.log('id for saba', id);
@@ -76,8 +80,9 @@ export default {
             console.log(id);
             notesService.saveClr(id, this.notes);
         },
-        checkTodo({ todoId, noteId }) {
-            notesService.markTodo(todoId, noteId);
+        markTodo({ todoId, noteId }) {
+            notesService.markTodo(todoId, noteId)
+                .then(note => this.getNotes())
         },
         pinNote(id) {
             console.log(id);
@@ -105,5 +110,6 @@ export default {
     unmounted() {
         this.unsubscribe();
         this.saveClr();
+        this.doneTodo();
     }
 }
