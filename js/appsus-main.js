@@ -9,14 +9,12 @@ import notesApp from './apps/notes/views/notes-app.cmp.js'
 
 const options = {
     template: `
-    <section>
+        <section>
        <app-header />
-       <!-- <router-view /> -->
-       <router-view v-slot="{Component}">
-           <transition 
-           enter-active-class="animate_animated animate_fadeInLeft"
-           leave-active-class="animate_animated animate_fadeOutLeft"  mode="out-in">
-           
+       <router-view v-slot="{Component, route}">
+            <transition 
+           :enter-active-class="route.meta.enterClass"
+           :leave-active-class="route.meta.leaveClass" mode="out-in">
                <component :is="Component"/>
             </transition>
        </router-view>
