@@ -4,7 +4,7 @@ export default {
         <section :class="[mail.isdRead ? 'gray-bg' : 'bold open-sans white-bg','mail-preview ell']">
             <!-- <span> -->
                 <div class="mail-preview-span">
-
+                        <span><img src="../icon/unstarred.png" width="20" height="20" alt="">|</span>
                         <router-link :to="'/mail/'+mail.id"> {{mail.name}}  |
                             {{mail.subject}} |
                             <span class="text-muted regular ">{{mail.body}}</span>  
