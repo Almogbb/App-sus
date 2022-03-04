@@ -9,7 +9,7 @@ import mailFolderList from '../cmps/mail-folder-list.cmp.js'
 export default {
     // props: [""],
     template: `
-        <section class="mail-index">
+        <section class="mail-app">
             <mail-compose @sendMail="sendMail" />
             <mail-folder-list  @filteredByClick="filterByClick" :mails="mails" />
             <mail-filter @filtered="setFilter" />

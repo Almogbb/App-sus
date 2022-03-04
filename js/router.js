@@ -11,23 +11,39 @@ const routes = [
 
     {
         path: '/',
-        component: homePage
+        component: homePage,
+        meta: {
+            enterClass: 'animate__animated animate__fadeInLeft',
+            leaveClass: 'animate__animated animate__fadeOutLeft'
+        }
     },
     {
         path: '/about',
-        component: aboutPage
+        component: aboutPage,
+        meta: {
+            enterClass: 'animate__animated animate__fadeInLeft',
+            leaveClass: 'animate__animated animate__fadeOutLeft'
+        }
     },
     {
         path: '/mail',
-        component: mailApp
+        component: mailApp,
+        meta: {
+            enterClass: 'animate__animated animate__fadeInLeft',
+            leaveClass: 'animate__animated animate__fadeOutLeft'
+        }
     },
     {
         path: '/notes',
-        component: notesApp
+        component: notesApp,
+        meta: {
+            enterClass: 'animate__animated animate__fadeInLeft',
+            leaveClass: 'animate__animated animate__fadeOutLeft'
+        }
     },
     {
         path: '/mail/:mailId',
-        component: mailDetails
+        component: mailDetails,
     },
 
     // {

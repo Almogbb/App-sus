@@ -10,6 +10,7 @@ export default {
             <p>From: {{user.name}}</p>
             <p>Subject: {{user.subject}}</p>
             <p>Message: {{user.body}}</p>
+            <router-link to='/mail'>go back</router-link>
                
         </section>
     `,
@@ -28,6 +29,7 @@ export default {
     },
     methods: {},
     computed: {},
+
 
 }
 
