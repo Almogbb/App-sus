@@ -16,6 +16,9 @@ export const notesService = {
     removeNote,
     duplicateNote,
     saveEdit,
+    saveClr,
+    markTodo,
+    // getNote
 
 }
 
@@ -29,12 +32,47 @@ function remove(notesId) {
 
 function get(notesId) {
     return storageService.get(NOTES_KEY, notesId)
-
 }
+
+// function getNote(notesId) {
+//     return storageService.get(NOTES_KEY, notesId)
+//         .then(note => {
+//             note.isPinned = !note.isPinned;
+//             return storageService.put(NOTES_KEY, note)
+//         })
+// }
 
 function save(noteId) {
     if (noteId) return storageService.put(NOTES_KEY, noteId);
     else return storageService.post(NOTES_KEY, noteId);
+}
+
+function saveClr(id, notes) {
+    const note = notes.find(note => note.id === id);
+    storageService.put(NOTES_KEY, note)
+}
+
+function markTodo(todoId, noteId) {
+    storageService.get(NOTES_KEY, noteId)
+        .then(note => {
+
+
+            const todo = note.info.todos.find(todo => todo.id === todoId);
+            console.log(todo);
+            todo.doneAt = todo.doneAt ? Date.now() : null
+            console.log(todo.doneAt);
+
+            // note.info.todos[todoIdx].doneAt = !note.info.todos[todoIdx].doneAt ? Date.now() : null;
+
+            // const todo = note.info.todos[todoIdx].doneAt;
+
+            return storageService.put(NOTES_KEY, note)
+
+            // todo = !todo.doneAt ? Date.now() : null;
+            // console.log(todoIdx);
+            // console.log(note);
+            // return 
+        })
 }
 
 function saveEdit(noteId, txt, notes) {
@@ -50,6 +88,22 @@ function addNote(inputTxt, type) {
     if (note.type === 'note-txt') note.info.txt = inputTxt;
     else if (note.type === 'note-img') note.info.url = inputTxt;
     else if (note.type === 'note-vid') note.info.url = inputTxt;
+    else if (note.type === 'note-todos') {
+        if (inputTxt.includes(',')) {
+            // var todos = [...inputTxt.split(',')]
+            var todos = [...inputTxt]
+            console.log(todos);
+            for (let i = 0; i < todos.length; i++) {
+                if (inputTxt[i] === ',') continue
+                note.info.todos.push({
+                    id: utilService.makeId(), txt: inputTxt[i], doneAt: ''
+                })
+            }
+            return storageService.post(NOTES_KEY, note);
+        }
+    }
+    // console.log(type);
+    console.log('done');
     return storageService.post(NOTES_KEY, note)
 }
 
@@ -146,7 +200,7 @@ function createNotes() {
                 isPinned: false,
                 info: {
                     url: 'https://upload.wikimedia.org/wikipedia/commons/transcoded/e/eb/Wood_cleaving_-_2016.webm/Wood_cleaving_-_2016.webm.480p.vp9.webm',
-                    txt: 'WOoWOWOWOWOWOWowowWWW'
+                    txt: 'This is how you cut tree'
                 },
                 style: {
                     backgroundColor: "#ffffff"
@@ -159,8 +213,8 @@ function createNotes() {
                 info: {
                     txt: "Get my stuff together",
                     todos: [
-                        { txt: "Driving liscence", doneAt: null },
-                        { txt: "Coding power", doneAt: 187111111 }
+                        { id: utilService.makeId(), txt: "Driving liscence", doneAt: null },
+                        { id: utilService.makeId(), txt: "Coding power", doneAt: 187111111 }
                     ]
                 },
                 style: {
@@ -179,10 +233,11 @@ function getEmptyNote(isPinned = false) {
         type: '',
         isPinned,
         info: {
-            txt: 'Enter Title'
+            txt: 'Enter Title',
+            todos: []
         },
         style: {
-            backgroundColor: "#1abc9c"
+            backgroundColor: "#ffffff"
         }
     };
 }

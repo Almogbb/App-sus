@@ -113,7 +113,7 @@
     border: 1px solid #dadce000;
     font-size: 1.1em;
     margin: 13px;
-    width: 210px;
+    width: 315px;
     height: 20px;
 }
 
@@ -166,7 +166,7 @@
 }
 
 .btn-group img{
-    width: 12px;
+    width: 16px;
 }
 
 .pos{
@@ -196,6 +196,13 @@
 .note-filter{
     width: 700px;
     margin: 10px;
+}
+
+.check{
+    text-decoration: line-through;
+}
+.not-check{
+    text-decoration: none;
 }
 
 .light-grey{

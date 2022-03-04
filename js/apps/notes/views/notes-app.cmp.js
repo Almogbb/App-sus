@@ -12,8 +12,8 @@ export default {
     template: `
         <section class="notes-app page-layout">
             <note-filter @filtered="setFilter"/>
-            <note-add :notes="notes" @addNote="getNote"/>
-            <notes-list @duplicate="duplicateNote" @removeNote="removeNote" :notes="carsForDisplay"/>
+            <note-add :notes="notes" @addNote="addNote"/>
+            <notes-list @duplicate="duplicateNote" @removeNote="removeNote" :notes="noteForDisplay"/>
         </section>
     `,
     components: {
@@ -27,17 +27,29 @@ export default {
             notes: null,
             id: '',
             filterBy: null,
+            // pinnedNotes: null,
+            // notesNotPinned: null,
         }
     },
     created() {
         notesService.query()
             .then(notes => this.notes = notes);
+        // notesService.query()
+        //     .then(notes => {
+        //         this.pinnedNotes = notes.filter(note => note.isPinned)
+        //         this.notesNotPinned = notes.filter(note => !note.isPinned)
+        //     });
+
         this.unsubscribe = eventBus.on('saveTitle', this.saveTitle);
+        this.saveClr = eventBus.on('changeClr', this.saveClr);
+        this.unsub = eventBus.on('pinned', this.pinNote);
+        this.toDo = eventBus.on('doneToDo', this.checkTodo);
     },
     methods: {
-        getNote(inputTxt, type) {
+        addNote(inputTxt, type) {
             notesService.addNote(inputTxt, type)
                 .then(note => {
+                    console.log(note);
                     this.notes.push(note);
                     // eventBus.emit('show-msg', { txt: 'added', type: 'success' })
                 })
@@ -59,10 +71,32 @@ export default {
         },
         setFilter(filterBy) {
             this.filterBy = filterBy
+        },
+        saveClr(id) {
+            console.log(id);
+            notesService.saveClr(id, this.notes);
+        },
+        checkTodo({ todoId, noteId }) {
+            notesService.markTodo(todoId, noteId);
+        },
+        pinNote(id) {
+            console.log(id);
+            notesService.getNote(id)
+            // var pinnedIdx = this.pinnedNotes.findIndex(note => note.id === id);
+            // var notesPinnedIdx = this.notesNotPinned.findIndex(note => note.id === id);
+            // if (pinnedIdx >= 0) {
+            //     this.pinnedNotes[pinnedIdx].isPinned = !this.pinnedNotes[pinnedIdx].isPinned
+            //     this.notesNotPinned.push(this.pinnedNotes[pinnedIdx])
+            //     this.pinnedNotes.splice(pinnedIdx, 1)
+            // } else {
+            //     this.notesNotPinned[notesPinnedIdx].isPinned = !this.notesNotPinned[notesPinnedIdx].isPinned
+            //     this.pinnedNotes.push(this.notesNotPinned[notesPinnedIdx])
+            //     this.notesNotPinned.splice(notesPinnedIdx, 1)
+            // }
         }
     },
     computed: {
-        carsForDisplay() {
+        noteForDisplay() {
             if (!this.filterBy) return this.notes;
             const regex = new RegExp(this.filterBy.type, 'i');
             return this.notes.filter(note => regex.test(note.type));
@@ -70,5 +104,6 @@ export default {
     },
     unmounted() {
         this.unsubscribe();
+        this.saveClr();
     }
 }
