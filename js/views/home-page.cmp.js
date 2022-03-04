@@ -6,7 +6,7 @@ export default {
 		<img class="shape2" src="./img/google-maps.svg" alt="">
 		<img class="shape3" src="./img/google-drive.svg" alt="">
 		<img class="shape4" src="./img/google-keep.svg" alt="">
-		<img class="shape5" src="./img/google.svg" alt="">
+		<img class="shape5" src="./img/google-gmail.svg" alt="">
 	</div>
 
 	<div class="home-inner">

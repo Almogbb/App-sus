@@ -1,0 +1,7 @@
+.mail-app {
+    width: 40%;
+    min-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    height: 80vh;
+}

@@ -11,6 +11,7 @@
 @import 'apps/misterEmail/mail-folder-list.css';
 @import 'apps/misterEmail/compose-modal.css';
 @import 'apps/misterEmail/mail-preview.css';
+@import 'apps/misterEmail/mail-app.css';
 
 /* COMPONENTS */
 
@@ -19,6 +20,7 @@
 @import 'cmps/main-navbar.css';
 @import 'cmps/main-content.css';
 @import 'cmps/home-page.css';
+@import 'cmps/transition-pages.css';
 
 /* @import 'cmps/add-book.css'; */
 

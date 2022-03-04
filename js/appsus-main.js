@@ -11,7 +11,15 @@ const options = {
     template: `
     <section>
        <app-header />
-       <router-view />
+       <!-- <router-view /> -->
+       <router-view v-slot="{Component}">
+           <transition 
+           enter-active-class="animate_animated animate_fadeInLeft"
+           leave-active-class="animate_animated animate_fadeOutLeft"  mode="out-in">
+           
+               <component :is="Component"/>
+            </transition>
+       </router-view>
         <!-- <notes-app /> -->
        <app-footer />
     </section>
