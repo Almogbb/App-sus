@@ -11,13 +11,14 @@ const options = {
     template: `
         <section>
        <app-header />
-       <router-view v-slot="{Component, route}">
+       <!-- <router-view v-slot="{Component, route}">
             <transition 
            :enter-active-class="route.meta.enterClass"
            :leave-active-class="route.meta.leaveClass" mode="out-in">
                <component :is="Component"/>
             </transition>
-       </router-view>
+       </router-view> -->
+       <router-view/>
         <!-- <notes-app /> -->
        <app-footer />
     </section>
