@@ -1,0 +1,11 @@
+.mail-details {
+    width: 40%;
+    position: relative;
+    height: 80vh;
+    margin: 0px auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 60px;
+}

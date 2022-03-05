@@ -3,6 +3,7 @@ import mailList from '../cmps/mail-list.cmp.js'
 import mailFilter from '../cmps/mail-filter.cmp.js'
 import mailCompose from '../cmps/mail-compose.cmp.js'
 import mailFolderList from '../cmps/mail-folder-list.cmp.js'
+import mailDetails from './mail-details.cmp.js'
 
 
 
@@ -13,7 +14,8 @@ export default {
             <mail-compose @sendMail="sendMail" />
             <mail-folder-list  @filteredByClick="filterByClick" :mails="mails" />
             <mail-filter @filtered="setFilter" />
-            <mail-list @deleteArchive="deleteArchived" @sendMailToArchived="sendMailToArchive" :mails="filteredMails" />
+            <mail-list @deleteArchive="deleteArchived" @sendMailToArchived="sendMailToArchive" :mails="filteredMails" @starredMail="starMail"/>
+
         </section>
     `,
     components: {
@@ -21,6 +23,8 @@ export default {
         mailFilter,
         mailCompose,
         mailFolderList,
+        mailDetails,
+
     },
     data() {
         return {
@@ -53,7 +57,9 @@ export default {
             mailService.query()
                 .then(mails => {
                     this.mails = mails;
-                    this.filteredMails = mails.filter((mail) => mail.type === 'Inbox' && 'ALL')
+                    this.filteredMails = mails.filter((mail) =>
+                        mail.type === 'Inbox'
+                    )
                 });
         },
         setFilter(filterBy) {
@@ -71,19 +77,17 @@ export default {
                 .then(mail => this.getMails())
 
         },
-        // deleteArchived(mailId) {
-        //     mailService.removeArchive(mailId, this.mails)
-        //         .then(mail => this.mails.slice(mail, 1))
-        // },
-        // deleteArchived(mailId) {
-        //     mailService.removeArchive(mailId, this.mails)
-        //         .then(mail)
-        // },
         deleteArchived(mailId) {
             mailService.remove(mailId)
-                .then(this.getMails)
+                .then(this.getMails())
 
-        }
+        },
+        starMail(mailId) {
+            console.log(mailId);
+            mailService.starMail(mailId, this.filteredMails)
+                .then(mail => this.mails)
+
+        },
     },
     computed: {
         mailsToShow() {

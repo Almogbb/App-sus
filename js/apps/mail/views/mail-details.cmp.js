@@ -1,22 +1,18 @@
 import { mailService } from '../services/mail-service.js'
-import mailFolderList from '../cmps/mail-folder-list.cmp.js';
 
 
 export default {
 
     template: `
-    <!-- <mailFolderList></mailFolderList> -->
-        <section v-if="user" class="mail-details">
-            <p>From: {{user.name}}</p>
-            <p>Subject: {{user.subject}}</p>
-            <p>Message: {{user.body}}</p>
-            <router-link to='/mail'>go back</router-link>
-               
-        </section>
+            <section v-if="user" class="mail-details">
+                <p>From: {{user.name}}</p>
+                <p>Subject: {{user.subject}}</p>
+                <p>Message: {{user.body}}</p>
+                <router-link to='/mail'>go back</router-link>
+                
+            </section>
     `,
-    components: {
-        mailFolderList,
-    },
+    components: {},
     data() {
         return {
             user: null,

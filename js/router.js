@@ -31,7 +31,11 @@ const routes = [
         meta: {
             enterClass: 'animate__animated animate__fadeInLeft',
             leaveClass: 'animate__animated animate__fadeOutLeft'
-        }
+        },
+        // children: [{
+        //     path: ':mailId',
+        //     component: mailDetails,
+        // }],
     },
     {
         path: '/notes',
@@ -41,6 +45,7 @@ const routes = [
             leaveClass: 'animate__animated animate__fadeOutLeft'
         }
     },
+
     {
         path: '/mail/:mailId',
         component: mailDetails,

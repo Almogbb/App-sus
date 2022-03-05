@@ -1,16 +1,30 @@
-.mail-preview span:last-child {
-    opacity: 1;
+.date-preview {
+    float: right;
+    padding-right: 16px;
 }
 
 .mail-preview:hover {
     box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
 }
 
-.mail-preview :last-child {
-    opacity: 1;
+.mail-preview {
+    padding: 5px;
 }
 
-.date-preview {
-    float: right;
-    padding-right: 16px;
+.date-preview::after {
+    clear: both;
+    display: inline-block;
+}
+
+.mail-preview span {
+    margin-right: 10px;
+}
+
+.mail-preview span:nth-child(3),
+.mail-preview span:nth-child(4) {
+    opacity: 0;
+}
+
+.mail-preview :hover span {
+    opacity: 1;
 }
