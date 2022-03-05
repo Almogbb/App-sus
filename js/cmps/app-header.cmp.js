@@ -22,8 +22,8 @@ export default {
             buttons: [
                 { isActive: true, text: 'Home', to: '/' },
                 { isActive: false, text: 'Mail', to: '/mail' },
-                { isActive: false, text: 'About', to: '/about' },
                 { isActive: false, text: 'Notes', to: '/Notes' },
+                { isActive: false, text: 'About', to: '/about' },
             ],
             isClicked: [],
             menuSelect: null,
