@@ -1,7 +1,8 @@
 .note-filter{
-    /* width: 700px; */
     padding: 10px;
-    padding-inline-start: 660px
+    display: flex;
+    justify-content: end;
+    margin-inline-end: 70px;
 }
 
 .note-filter input{

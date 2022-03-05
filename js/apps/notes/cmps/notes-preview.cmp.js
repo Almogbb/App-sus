@@ -15,8 +15,6 @@ export default {
                     class="note-btn top-btn remove" 
                     @click="removeNote(note.id)">X
                 </a>
-                <!-- <a @click="changePin(note.id)" class="note-btn bottom-btn">
-                    <img src="icon/pin.png"></a> -->
                 <a title="mark note" class="note-btn bottom-btn mark" :class="markBtn" 
                     @click="highLightNote"><img src="icon/check.png">
                 </a>
@@ -24,8 +22,6 @@ export default {
                     <img src="icon/color-palette.png"></a>
                 <a class="note-btn bottom-btn" @click="duplicate(note.id)">
                     <img src="icon/duplicate.png"></a>
-                <!-- <a class="note-btn bottom-btn">img</a>
-                <a class="note-btn bottom-btn">img</a> -->
             </div>
             <div v-if="isClrClicked" class="clr-group">
                 <div @click="setGrey(note.id)" class="round light-grey"></div>
@@ -42,12 +38,6 @@ export default {
                 <div @click="setDefault(note.id)" class="round default"></div>
             </div>
         </div>
-        
-        <!-- <pre>
-              
-                - FIX CLR INSIDE NOTE 
-    
-            </pre> -->
     `,
     components: {
         noteImg,
@@ -65,7 +55,6 @@ export default {
     },
     methods: {
         removeNote(id) {
-            console.log(id);
             this.$emit('removeNote', id);
         },
         duplicate(id) {
@@ -73,14 +62,11 @@ export default {
         },
         highLightNote() {
             this.isHighLight = !this.isHighLight;
-            console.log(this.isHighLight);
         },
         changeClr() {
             this.isClrClicked = !this.isClrClicked;
         },
         changePin(id) {
-            console.log(id);
-            console.log(this.isPinned);
             eventBus.emit('pinned', id)
         },
         setGrey(id) {
@@ -142,9 +128,6 @@ export default {
         markBtn() {
             return { 'mark-highlight': this.isHighLight };
         },
-        // showBtns() {
-        //     return { 'btn-action': this.isHover }
-        // }
     },
 
 }
