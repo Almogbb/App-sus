@@ -95,14 +95,15 @@ function addNote(inputTxt, type) {
 }
 
 function removeNote(id, notes) {
-    const noteIdx = notes.findIndex(note => note.id === id);
-    notes.splice(noteIdx, 1);
-    return utilService.saveToStorage(NOTES_KEY, notes);
+    // const noteIdx = notes.findIndex(note => note.id === id);
+    // notes.splice(noteIdx, 1);
+    // return utilService.saveToStorage(NOTES_KEY, notes);
+    return storageService.remove(NOTES_KEY, id);
 }
 
 function duplicateNote(id, notes) {
-    const noteCopy = notes.find(note => note.id === id)
-    notes.push(noteCopy);
+    const noteDuplicate = notes.find(note => note.id === id)
+    notes.push(noteDuplicate);
     return utilService.saveToStorage(NOTES_KEY, notes)
 }
 
@@ -116,7 +117,31 @@ function createNotes() {
                 type: "note-txt",
                 isPinned: false,
                 info: {
-                    txt: "Fullstack Me Baby!"
+                    txt: "I want to see the OUTSIDE!"
+                },
+                style: {
+                    backgroundColor: "#fbbc04"
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: "note-vid",
+                isPinned: false,
+                info: {
+                    url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
+                    txt: 'Educational Video!'
+                },
+                style: {
+                    backgroundColor: "#ffffff"
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: "note-img",
+                isPinned: false,
+                info: {
+                    url: 'img/we-want-you.jpg',
+                    txt: "Where Are You???"
                 },
                 style: {
                     backgroundColor: "#ffffff"
@@ -135,27 +160,64 @@ function createNotes() {
             },
             {
                 id: utilService.makeId(),
+                type: "note-img",
+                isPinned: false,
+                info: {
+                    url: 'img/smile.gif',
+                    txt: "Where Are You???"
+                },
+                style: {
+                    backgroundColor: "#ffffff"
+                }
+            },
+
+            {
+                id: utilService.makeId(),
                 type: "note-txt",
                 isPinned: false,
                 info: {
-                    txt: "Fullstack Me Baby!"
+                    txt: 'Chuck Norris can! take a screenshot of his blue screen'
                 },
                 style: {
-                    backgroundColor: "#1abc9c"
+                    backgroundColor: "#fdcfe8"
                 }
             },
-            // {
-            //     id: utilService.makeId(),
-            //     type: "note-vid",
-            //     isPinned: false,
-            //     info: {
-            //         url: 'https://www.youtube.com/watch?v=gThS-KfIxOs&t=2599s',
-            //         txt: "Best Video EVER!"
-            //     },
-            //     style: {
-            //         backgroundColor: "#ffffff"
-            //     }
-            // },
+            {
+                id: utilService.makeId(),
+                type: "note-txt",
+                isPinned: false,
+                info: {
+                    txt: `Why did the programmer quit his job?
+                    Because he didn't get arrays`
+                },
+                style: {
+                    backgroundColor: "#a7ffeb"
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: "note-img",
+                isPinned: false,
+                info: {
+                    url: 'img/giphy.gif',
+                    txt: "Dont look at me"
+                },
+                style: {
+                    backgroundColor: "#e6c9a8"
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: "note-img",
+                isPinned: false,
+                info: {
+                    url: 'img/sci.jpg',
+                    txt: "Dont look at me"
+                },
+                style: {
+                    backgroundColor: "#fff475"
+                }
+            },
             {
                 id: utilService.makeId(),
                 type: "note-vid",
@@ -173,7 +235,6 @@ function createNotes() {
                 type: "note-img",
                 isPinned: false,
                 info: {
-                    // url: "http://some-img/me",
                     url: 'img/download.jpg',
                     txt: "Bobi and Me"
                 },
@@ -195,6 +256,18 @@ function createNotes() {
             },
             {
                 id: utilService.makeId(),
+                type: "note-img",
+                isPinned: false,
+                info: {
+                    url: 'img/matrix.gif',
+                    txt: "Where Are You???"
+                },
+                style: {
+                    backgroundColor: "#ffffff"
+                }
+            },
+            {
+                id: utilService.makeId(),
                 type: "note-todos",
                 isPinned: false,
                 info: {
@@ -206,7 +279,8 @@ function createNotes() {
                 },
                 style: {
                     backgroundColor: "#ffffff"
-                }
+                },
+
             })
         utilService.saveToStorage(NOTES_KEY, notes);
     }
@@ -216,7 +290,6 @@ function createNotes() {
 function getEmptyNote(isPinned = false) {
     return {
         id: '',
-        // type: "note-txt",
         type: '',
         isPinned,
         info: {

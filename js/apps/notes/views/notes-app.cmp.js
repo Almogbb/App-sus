@@ -1,9 +1,10 @@
+import { eventBus } from '../../../cmps/services/eventBus-service.js';
 import { notesService } from '../services/notes-services.js';
-import { utilService } from '../../../cmps/services/util-service.js';
+// import { utilService } from '../../../cmps/services/util-service.js';
 import notesList from '../cmps/notes-list.cmp.js';
 import noteAdd from '../cmps/note-add.cmp.js';
-import { eventBus } from '../../../cmps/services/eventBus-service.js';
 import noteFilter from '../cmps/note-filter.cmp.js';
+import userMsg from '../cmps/user-msg.cmp.js';
 
 
 
@@ -12,6 +13,7 @@ export default {
     template: `
         <section class="notes-app page-layout">
             <note-filter @filtered="setFilter"/>
+            <user-msg />
             <note-add :notes="notes" @addNote="addNote"/>
             <notes-list @duplicate="duplicateNote" @removeNote="removeNote" :notes="noteForDisplay"/>
         </section>
@@ -19,7 +21,8 @@ export default {
     components: {
         notesList,
         noteAdd,
-        noteFilter
+        noteFilter,
+        userMsg
 
     },
     data() {
@@ -62,11 +65,15 @@ export default {
         removeNote(id) {
             console.log('id for saba', id);
             notesService.removeNote(id, this.notes)
+                .then(notes => {
+                    this.getNotes();
+                    eventBus.emit('show-msg', { txt: 'Note removed succesfully' })
+                })
         },
         duplicateNote(id) {
             console.log('id for saba', id);
             notesService.duplicateNote(id, this.notes)
-            // notesService.removeNote(id, this.notes)
+            eventBus.emit('show-msg', { txt: 'Duplicated note was created' })
         },
         saveTitle({ id, txt }) {
             console.log(id);

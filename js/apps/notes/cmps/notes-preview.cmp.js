@@ -3,28 +3,29 @@ import noteImg from './note-img.cmp.js';
 import noteTxt from './note-txt.cmp.js';
 import noteVid from './note-video.cmp.js';
 import noteTodos from './note-todos.cmp.js';
-// import noteEdit from './note-edit.cmp.js';
 
 export default {
     props: ['note'],
     template: `
         
         <div class="note" :class="boldNote" :style="{backgroundColor:fillColor}">
-            <!-- <component v-if="isPinned" :is="note.type" :note="note" ></component> -->
-        <!-- :style="{'background-color':fillColor}" -->
             <component :is="note.type" :note="note" ></component>
-            <div class="btn-group show-btn">
-                <button class="note-btn top-btn remove" @click="removeNote(note.id)">X</button>
-                <a @click="changePin(note.id)" class="note-btn bottom-btn pinned">
-                    <img src="icon/pin.png"></a>
-                <a title="mark note" class="note-btn top-btn mark" :class="markBtn" 
-                @click="highLightNote"><img src="icon/check.png"></a>
-                <a class="note-btn bottom-btn duplicate" @click="duplicate(note.id)">
-                    <img src="icon/duplicate.png"></a>
+            <div class="btn-group show-btn" >
+                <a 
+                    class="note-btn top-btn remove" 
+                    @click="removeNote(note.id)">X
+                </a>
+                <!-- <a @click="changePin(note.id)" class="note-btn bottom-btn">
+                    <img src="icon/pin.png"></a> -->
+                <a title="mark note" class="note-btn bottom-btn mark" :class="markBtn" 
+                    @click="highLightNote"><img src="icon/check.png">
+                </a>
                 <a class="note-btn bottom-btn pos" @click=changeClr>
                     <img src="icon/color-palette.png"></a>
-                <a class="note-btn bottom-btn">img</a>
-                <a class="note-btn bottom-btn">img</a>
+                <a class="note-btn bottom-btn" @click="duplicate(note.id)">
+                    <img src="icon/duplicate.png"></a>
+                <!-- <a class="note-btn bottom-btn">img</a>
+                <a class="note-btn bottom-btn">img</a> -->
             </div>
             <div v-if="isClrClicked" class="clr-group">
                 <div @click="setGrey(note.id)" class="round light-grey"></div>
@@ -38,31 +39,28 @@ export default {
                 <div @click="setYellow(note.id)" class="round yellow"></div>
                 <div @click="setOrange(note.id)" class="round orange"></div>
                 <div @click="setRed(note.id)" class="round light-red"></div>
+                <div @click="setDefault(note.id)" class="round default"></div>
             </div>
         </div>
         
         <!-- <pre>
-                - FIX EVENT BUS FOR NOTE WHEN REMOVE AND MORE
-                - try to fix vid
-                - FIX ENTER TITLE FOR VID AND IMG - DONE
-                - FIX X, V, PIN, CLR INSIDE NOTE 
+              
+                - FIX CLR INSIDE NOTE 
     
             </pre> -->
-       
     `,
     components: {
         noteImg,
         noteTxt,
         noteVid,
         noteTodos,
-        // noteEdit,
+
     },
     created() { },
     data() {
         return {
             isHighLight: false,
             isClrClicked: false,
-            // isPinned: false,
         }
     },
     methods: {
@@ -81,10 +79,8 @@ export default {
             this.isClrClicked = !this.isClrClicked;
         },
         changePin(id) {
-            // this.isPinned = !this.isPinned;
             console.log(id);
             console.log(this.isPinned);
-
             eventBus.emit('pinned', id)
         },
         setGrey(id) {
@@ -131,6 +127,10 @@ export default {
             this.note.style.backgroundColor = '#f28b82';
             eventBus.emit('changeClr', id);
         },
+        setDefault(id) {
+            this.note.style.backgroundColor = '#ffffff';
+            eventBus.emit('changeClr', id);
+        },
     },
     computed: {
         boldNote() {
@@ -141,7 +141,10 @@ export default {
         },
         markBtn() {
             return { 'mark-highlight': this.isHighLight };
-        }
+        },
+        // showBtns() {
+        //     return { 'btn-action': this.isHover }
+        // }
     },
 
 }

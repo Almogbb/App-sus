@@ -1,0 +1,30 @@
+
+@media (max-width: 558px){
+    .note-list-layout{
+        column-count: 1;
+
+    }
+}
+
+@media (min-width: 559px){
+    .note-list-layout{
+        column-count: 2;
+        /* margin: 0 139px; */
+        width: 560px;
+    }
+}
+
+@media (min-width: 840px){
+    .note-list-layout{
+        width: 860px;
+        column-count: 3;
+        margin: auto;
+    }
+}
+
+@media (min-width:1250px){
+    .note-list-layout{
+        min-width: 1250px;
+        column-count: 5;
+    }
+}

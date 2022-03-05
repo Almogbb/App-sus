@@ -8,6 +8,16 @@
     src: url(../../fonts/Open_Sans/OpenSans-VariableFont_wdth\,wght.ttf);
 }
 
+@font-face {
+    font-family: google-sans;
+    src: url(../../fonts/Google-sans/ProductSans-Regular.ttf);
+}
+@font-face {
+    font-family: google-sans-med;
+    src: url(../../fonts/Google-sans/ProductSans-Medium.ttf);
+}
+
+
 .bold {
     font-weight: bold;
 }

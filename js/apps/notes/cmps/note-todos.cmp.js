@@ -26,14 +26,13 @@ export default {
         toggleCheck(todoId, noteId) {
             this.isCheck = !this.isCheck;
             eventBus.emit('doneToDo', { todoId, noteId })
+        },
+        saveTitle(id, ev) {
+            const textValue = ev.currentTarget.textContent;
+            eventBus.emit('saveTitle', { 'id': id, 'txt': textValue })
         }
     },
-    computed: {
-        markTodo() {
-
-        }
-    },
-    unmounted() { },
+    computed: {},
 }
 
 
