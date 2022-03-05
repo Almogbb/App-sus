@@ -37,6 +37,7 @@ export default {
             currentUrl: 'icon/read.png',
         }
     },
+    // <!-- not working dont touch! -->
     // watch: {
     //     mail: {
     //         handler(newValue, oldValue) {
@@ -45,6 +46,7 @@ export default {
     //             }
     //         }
     //     }
+    // <!-- not working dont touch! -->
     methods: {
         isRead() {
             this.mail.isRead = !this.mail.isRead

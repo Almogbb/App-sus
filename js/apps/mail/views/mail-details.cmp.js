@@ -23,14 +23,6 @@ export default {
         mailService.get(id)
             .then(user => this.user = user)
     },
-    methods: {},
-    computed: {},
 
 
 }
-
-
-// • Routable component (page)
-// • show the entire email
-// • Allow deleting an email (using the service)
-// • Allow navigating back to list

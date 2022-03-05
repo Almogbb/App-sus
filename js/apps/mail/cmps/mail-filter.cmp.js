@@ -1,5 +1,4 @@
 export default {
-    // props: [""],
     template: `
         <section class="mail-filter margin-left padding-bottom">
         <label>

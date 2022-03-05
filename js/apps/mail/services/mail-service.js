@@ -166,12 +166,6 @@ function updateStatusMail(mail) {
     utilService.saveToStorage(mail)
 }
 
-// function removeArchive(mailId, mails) {
-//     const mailIdx = mails.findIndex(mail => mail.id === mailId);
-//     mails.splice(mailIdx, 1);
-//     return storageService.remove(mailIdx)
-// }
-
 function removeArchive(mailId, mails) {
     const mailIdx = mails.findIndex(mail => mail.id === mailId);
     mails.splice(mailIdx, 1);

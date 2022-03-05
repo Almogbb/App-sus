@@ -6,9 +6,7 @@ import mailFolderList from '../cmps/mail-folder-list.cmp.js'
 import mailDetails from './mail-details.cmp.js'
 
 
-
 export default {
-    // props: [""],
     template: `
         <section class="mail-app">
             <mail-compose @sendMail="sendMail" />
@@ -44,9 +42,6 @@ export default {
                 if (newValue) {
                     this.filteredMails = newValue
                 }
-                // Note: `newValue` will be equal to `oldValue` here
-                // on nested mutations as long as the object itself
-                // hasn't been replaced.
             },
             deep: true
         }
@@ -88,10 +83,6 @@ export default {
                 .then(mail => this.mails)
 
         },
-        // updatedStatus(mail) {
-        //     debugger
-        //     mailService.updateStatusMail(mail)
-        // }
     },
     computed: {
         mailsToShow() {
@@ -103,18 +94,5 @@ export default {
             )
 
         },
-
-
-        newMailsCount() {
-            let counter = 0
-            this.mails.forEach(mail => {
-                if (!mail.isRead) counter++
-            });
-            return counter
-
-        }
-
-
     },
-    unmounted() {},
 }
