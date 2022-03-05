@@ -235,6 +235,23 @@ function createNotes() {
             },
             {
                 id: utilService.makeId(),
+                type: "note-todos",
+                isPinned: false,
+                info: {
+                    txt: "Get my stuff together",
+                    todos: [
+                        { id: utilService.makeId(), txt: "Clean the house", doneAt: null },
+                        { id: utilService.makeId(), txt: "Eat some food", doneAt: 187111111 },
+                        { id: utilService.makeId(), txt: "Go outside", doneAt: 187111111 },
+                    ]
+                },
+                style: {
+                    backgroundColor: "#ffffff"
+                },
+
+            },
+            {
+                id: utilService.makeId(),
                 type: "note-img",
                 isPinned: false,
                 info: {
