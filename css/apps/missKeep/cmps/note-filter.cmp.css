@@ -1,0 +1,12 @@
+.note-filter{
+    /* width: 700px; */
+    padding: 10px;
+    padding-inline-start: 660px
+}
+
+.note-filter input{
+    background-color: #f1f3f4;
+    border: 1px solid #f1f3f4;
+    border-radius: 8px;
+    box-shadow: 0 0 1px 0px;
+}

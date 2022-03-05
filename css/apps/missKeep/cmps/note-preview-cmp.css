@@ -1,0 +1,191 @@
+.note {
+    position: relative;
+    min-height: 104px;
+    width: 240px;
+    padding: 5px;
+    margin: 10px;
+    border: 1px solid rgb(223, 218, 218);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    text-align: center;
+    font-family: google-sans-med, sans-serif;
+    color: rgba(128, 128, 128, 0.945);
+}
+
+.note:hover>.btn-group {
+    transition: ease-in-out 0.3s;
+    cursor: pointer;
+    opacity: 1;
+}
+
+.note img {
+    width: 200px;
+    border-radius: 7px;
+}
+
+.note iframe {
+    width: 230px;
+}
+
+.enter-card {
+    opacity: 0;
+    transition: ease-in-out 0.3s;
+}
+
+.show-btn {
+    opacity: 0;
+    transition: ease-in-out 0.3s;
+}
+
+.note:hover {
+    box-shadow: -0px 0px 10px #b3b0b0;
+    transition: ease-in-out 0.3s;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: space-evenly;
+    height: 34px;
+}
+
+.btn-group img {
+    width: 18px;
+    user-select: none;
+}
+
+.btn-group>* {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.note-btn {
+    /* cursor: pointer; */
+    width: 34px;
+    height: 34px;
+    margin: 3px;
+    border: 0;
+    padding: 0;
+    opacity: 0.87;
+}
+
+.top-btn {
+    top: 0;
+    height: fit-content;
+    width: fit-content;
+}
+
+.bottom-btn {
+    border-radius: 50%;
+}
+
+.bottom-btn:hover {
+    background-color: rgba(95, 99, 104, 0.157);
+}
+
+.clr-group {
+    position: absolute;
+    display: flex;
+    right: -53px;
+    bottom: -42px;
+    z-index: 1;
+    background-color: #ffffff;
+    padding: 10px;
+    box-shadow: 0 0 4.2px #0000005c;
+    border-radius: 10px;
+}
+
+.clr-group>* {
+    margin: 1px;
+}
+
+.round {
+    width: 25px;
+    height: 25px;
+    background: red;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.round:hover {
+    border: 2px solid black;
+}
+
+
+/* .mark{
+    position: absolute;
+    right: 2px;
+    font-size: .700em;
+    border-radius: 50%;
+} */
+
+.mark-highlight {
+    background: rgb(119, 114, 114);
+    color: white;
+}
+
+.boldNote {
+    border: 3px solid black;
+}
+
+.pos {
+    position: relative;
+}
+
+.remove {
+    position: absolute;
+    left: 2px;
+    border-radius: 10px;
+}
+
+.light-grey {
+    background-color: #e8eaed;
+}
+
+.light-brown {
+    background-color: #e6c9a8;
+}
+
+.light-pink {
+    background-color: #fdcfe8;
+}
+
+.light-purple {
+    background-color: #d7aefb;
+}
+
+.blue {
+    background-color: #aecbfa;
+}
+
+.light-blue {
+    background-color: #cbf0f8;
+}
+
+.turquoise {
+    background-color: #a7ffeb;
+}
+
+.light-green {
+    background-color: #ccff90;
+}
+
+.yellow {
+    background-color: #fff475;
+}
+
+.orange {
+    background-color: #fbbc04;
+}
+
+.light-red {
+    background-color: #f28b82;
+}
+
+.default {
+    border: 2px solid rgba(128, 128, 128, 0.39);
+    background-color: #ffffff;
+}

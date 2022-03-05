@@ -3,7 +3,7 @@ export default {
       	<header class="light-gray">
 		<div class="header-inner">
 			<div class="logo">
-				<img src="../icon/app-sus.png" alt="" height="100">
+				<img src="../icon/app-sus.png" alt="" height="110" width="150">
 			</div>
 			<div  :class="[openNav ? 'btn-menu' : '', 'menu']">
 				<ul>
