@@ -10,7 +10,6 @@ export default {
                     {{todo.txt}}
                 </li>
             </ul>
-            <!-- :style="todo.doneAt? 'text-decoration: line-through':''" -->
         </section>
     `,
     components: {},
@@ -34,19 +33,3 @@ export default {
     },
     computed: {},
 }
-
-
-// {
-//     id: utilService.makeId(),
-//     type: "note-todos",
-//     isPinned: false,
-//     info: {
-//         txt: "Get my stuff together",
-//         todos: [
-//             { txt: "Driving liscence", doneAt: null },
-//             { txt: "Coding power", doneAt: 187111111 }
-//         ]
-//     },
-//     style: {
-//         backgroundColor: "#ffffff"
-//     }

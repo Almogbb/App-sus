@@ -1,5 +1,4 @@
 export default {
-    // props: [""],
     template: `
         <section class="note-filter">
             <label>
@@ -9,7 +8,6 @@ export default {
                     placeholder=" Serach by type"
                 />
                 <datalist id="type">
-                    <!-- <option value="select"></option> -->
                     <option value="note-txt">Text</option>
                     <option value="note-vid">Video</option>
                     <option value="note-img">Image</option>

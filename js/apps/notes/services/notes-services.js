@@ -18,8 +18,6 @@ export const notesService = {
     saveEdit,
     saveClr,
     markTodo,
-    // getNote
-
 }
 
 function query() {
@@ -33,14 +31,6 @@ function remove(notesId) {
 function get(notesId) {
     return storageService.get(NOTES_KEY, notesId)
 }
-
-// function getNote(notesId) {
-//     return storageService.get(NOTES_KEY, notesId)
-//         .then(note => {
-//             note.isPinned = !note.isPinned;
-//             return storageService.put(NOTES_KEY, note)
-//         })
-// }
 
 function save(noteId) {
     if (noteId) return storageService.put(NOTES_KEY, noteId);
@@ -56,17 +46,12 @@ function markTodo(todoId, noteId) {
     return storageService.get(NOTES_KEY, noteId)
         .then(note => {
             const todo = note.info.todos.find(todo => todo.id === todoId);
-            // console.log(todo);
-            // if(todo.doneAt)
             todo.doneAt = todo.doneAt ? null : Date.now();
-            // console.log(todo.doneAt);
-            console.log(todo);
             return storageService.put(NOTES_KEY, note);
         })
 }
 
 function saveEdit(noteId, txt, notes) {
-    console.log(noteId, txt);
     const note = notes.find(note => note.id === noteId)
     note.info.txt = txt;
     return storageService.put(NOTES_KEY, note)
@@ -81,8 +66,6 @@ function addNote(inputTxt, type) {
     else if (note.type === 'note-todos') {
         if (inputTxt.includes(',')) {
             var todos = [...inputTxt.split(',')]
-            // var todos = [...inputTxt]
-            console.log(todos);
             todos.map(task => {
                 note.info.todos.push({
                     id: utilService.makeId(), txt: task, doneAt: ''
@@ -95,9 +78,6 @@ function addNote(inputTxt, type) {
 }
 
 function removeNote(id, notes) {
-    // const noteIdx = notes.findIndex(note => note.id === id);
-    // notes.splice(noteIdx, 1);
-    // return utilService.saveToStorage(NOTES_KEY, notes);
     return storageService.remove(NOTES_KEY, id);
 }
 
@@ -170,7 +150,6 @@ function createNotes() {
                     backgroundColor: "#ffffff"
                 }
             },
-
             {
                 id: utilService.makeId(),
                 type: "note-txt",
@@ -307,38 +286,3 @@ function _createNote(isPinned = false) {
     note.id = utilService.makeId()
     return note;
 }
-
-
-// const notes = [
-//     {
-//         id:
-//             "n101",
-//         type: "note-txt",
-//         isPinned: true,
-//         info: {
-//             txt: "Fullstack Me Baby!"
-//         }
-//     },
-//     {
-//         id: "n102",
-//         type: "note-img",
-//         info: {
-//             url: "http://some-img/me",
-//             title: "Bobi and Me"
-//         },
-//         style: {
-//             backgroundColor: "#00d"
-//         }
-//     },
-//     {
-//         id: "n103",
-//         type: "note-todos",
-//         info: {
-//             label: "Get my stuff together",
-//             todos: [
-//                 { txt: "Driving liscence", doneAt: null },
-//                 { txt: "Coding power", doneAt: 187111111 }
-//             ]
-//         }
-//     }
-// ];

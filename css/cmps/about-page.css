@@ -2,31 +2,26 @@
     min-height: 80vh;
 }
 
-.almog-container{
-    width: 1100px;
+.about-container{
     margin: auto;
     padding-inline: 10px;
     padding-block: 10px;
 }
 
-.almog-container p{
-    width: 216px;
+.about-container p{
     height: 270px;
     font-size: 1.125em;
     font-family: google-sans-med,sans-serif;
 }
 
-.almog-container img{
-    width: 350px;
+.about-container img{
     border-radius: 10px;
 }
 
-.almog-layout{
+.about-layout{
     background-color: #e4e2e2;
     display: flex;
     justify-content: space-evenly;
-    margin-block-start: 40px;
-    padding: 19px;
     border-radius: 45px;
 }
 
