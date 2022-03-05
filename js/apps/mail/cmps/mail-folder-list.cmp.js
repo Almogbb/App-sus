@@ -2,9 +2,9 @@ export default {
     props: ['mails'],
     template: `
         <section class="mail-folder-list absolute" >
-            <div :key="button" v-for="button in buttons">
+            <div @click="activateButton(button)" :key="button" v-for="button in buttons">
                 
-                <button :class="[showPicked ? 'bold': '', 'btn regular']"
+                <button :class="[button.isActive ? 'folder-list' : '', 'btn regular']"
                   @click="filterByFolder(button.type)"> <img :src="button.src" alt="">{{button.text}}</button>
             </div>
         </section>
@@ -14,10 +14,10 @@ export default {
         return {
             showPicked: true,
             buttons: [
-                { type: 'Inbox', text: 'Inbox', src: './icon/inbox.png' },
-                { type: 'Starred', text: 'Starred', src: './icon/unstarred.png' },
-                { type: 'Send', text: 'Sent', src: './icon/sent.png' },
-                { type: 'Archive', text: 'Archive', src: './icon/archive.png' },
+                { type: 'Inbox', text: 'Inbox', src: './icon/inbox.png', isActive: true },
+                { type: 'Starred', text: 'Starred', src: './icon/unstarred.png', isActive: false },
+                { type: 'Send', text: 'Sent', src: './icon/sent.png', isActive: false },
+                { type: 'Archive', text: 'Archive', src: './icon/archive.png', isActive: false },
             ],
             isClick: false,
         }
@@ -28,6 +28,11 @@ export default {
         },
         toggle() {
             this.showPicked = !this.showPicked
-        }
+        },
+        activateButton(activatedButton) {
+            for (let button of this.buttons) {
+                button.isActive = button === activatedButton
+            }
+        },
     },
 }

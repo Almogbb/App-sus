@@ -105,6 +105,14 @@ export default {
         },
 
 
+        newMailsCount() {
+            let counter = 0
+            this.mails.forEach(mail => {
+                if (!mail.isRead) counter++
+            });
+            return counter
+
+        }
 
 
     },

@@ -37,15 +37,14 @@ export default {
             currentUrl: 'icon/read.png',
         }
     },
-    watch: {
-        mail: {
-            handler(newValue, oldValue) {
-                if (newValue) {
-                    this.mail = newValue
-                }
-            }
-        }
-    },
+    // watch: {
+    //     mail: {
+    //         handler(newValue, oldValue) {
+    //             if (newValue) {
+    //                 this.mail = newValue
+    //             }
+    //         }
+    //     }
     methods: {
         isRead() {
             this.mail.isRead = !this.mail.isRead

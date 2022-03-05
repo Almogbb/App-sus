@@ -5,6 +5,7 @@
         max-width: 1140px;
         height: 10vh;
         margin: 0 auto;
+        padding-right: 20px;
         background-color: lightgrey;
     }
     
@@ -78,4 +79,9 @@
     .nav-bar-menu {
         font-weight: bold;
         border-bottom: solid 2px;
+    }
+    
+    .folder-list {
+        font-weight: bold;
+        background: lightgrey;
     }

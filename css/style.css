@@ -5,12 +5,16 @@
 
 /* APPS */
 
+
 /******* missKeep *********/
 
+
 /* BASE */
+
 @import 'apps/missKeep/cmps/base/basic.css';
 
 /* COMPONENTS */
+
 @import 'apps/missKeep/cmps/note-preview-cmp.css';
 @import 'apps/missKeep/cmps/note-add-cmp.css';
 @import 'apps/missKeep/cmps/note-list.cmps.css';
@@ -18,8 +22,8 @@
 @import 'apps/missKeep/cmps/mq.css';
 @import 'apps/missKeep/cmps/user-msg.cmp.css';
 
-
 /* misterMail */
+
 @import 'apps/misterEmail/main-list.css';
 @import 'apps/misterEmail/main-content.css';
 @import 'apps/misterEmail/mail-folder-list.css';
@@ -30,7 +34,6 @@
 
 /* COMPONENTS */
 
-@import 'cmps/main-header.css';
 @import 'cmps/main-footer.css';
 @import 'cmps/main-navbar.css';
 @import 'cmps/main-content.css';
@@ -60,4 +63,5 @@
 @import 'basic/layouts.css';
 @import 'basic/base.css';
 @import 'basic/helpers.css';
+@import 'cmps/main-header.css';
 @import 'basic/mq.css';
