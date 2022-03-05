@@ -6,7 +6,7 @@ export default {
         <section>
             <div class="title" @blur="saveTitle(note.id,$event)" contenteditable="true">{{note.info.txt}}</div>
             <iframe :src="note.info.url" width="100%"
-            height="150"></iframe>
+            height="120"></iframe>
         </section>
     `,
     components: {},
