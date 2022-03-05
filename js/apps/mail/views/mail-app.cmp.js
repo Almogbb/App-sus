@@ -14,7 +14,7 @@ export default {
             <mail-compose @sendMail="sendMail" />
             <mail-folder-list  @filteredByClick="filterByClick" :mails="mails" />
             <mail-filter @filtered="setFilter" />
-            <mail-list @deleteArchive="deleteArchived" @sendMailToArchived="sendMailToArchive" :mails="filteredMails" @starredMail="starMail"/>
+            <mail-list  @deleteArchive="deleteArchived" @sendMailToArchived="sendMailToArchive" :mails="filteredMails" @starredMail="starMail"/>
 
         </section>
     `,
@@ -88,6 +88,10 @@ export default {
                 .then(mail => this.mails)
 
         },
+        // updatedStatus(mail) {
+        //     debugger
+        //     mailService.updateStatusMail(mail)
+        // }
     },
     computed: {
         mailsToShow() {

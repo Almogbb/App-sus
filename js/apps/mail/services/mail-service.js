@@ -13,6 +13,7 @@ export const mailService = {
     sendMailToArchive,
     removeArchive,
     starMail,
+    updateStatusMail,
 }
 
 createMails();
@@ -158,6 +159,11 @@ function starMail(mailId, mails) {
     const mailIdx = mails.find(mail => mail.id === mailId);
     mailIdx.type = 'Starred'
     return storageService.put(MAILS_KEY, mailIdx);
+}
+
+function updateStatusMail(mail) {
+    mail.isRead = true
+    utilService.saveToStorage(mail)
 }
 
 // function removeArchive(mailId, mails) {

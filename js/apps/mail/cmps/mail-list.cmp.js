@@ -31,7 +31,11 @@ export default {
         },
         starMail(mailId) {
             this.$emit('starredMail', mailId)
-        }
+        },
+        // updateStatus(mail) {
+        //     debugger
+        //     this.$emit('updateStatus', mail)
+        // }
 
     },
     computed: {},

@@ -1,9 +1,12 @@
+import { mailService } from '../services/mail-service.js'
+
 export default {
     props: ['mail'],
     template: `
         <section :class="[mail.isRead ? 'light-gray text-muted open-sans' : 'bold open-sans white-bg','mail-preview ell']">
                         <span @click="starMail(mail.id)"><img :src="changeSourceStar" width="20" height="20" alt="" @click="imgClickedStar = !imgClickedStar" ></span>
-                        <router-link :to="'/mail/'+mail.id"> {{mail.name}}  
+                        
+                        <router-link  @click="updateStatus(mail)" :to="'/mail/'+mail.id"> {{mail.name}}  
                             {{mail.subject}} 
                             <span class="text-muted regular ">{{mail.body}}</span>  
                             <span class="date-preview">
@@ -34,6 +37,15 @@ export default {
             currentUrl: '../icon/read.png',
         }
     },
+    watch: {
+        mail: {
+            handler(newValue, oldValue) {
+                if (newValue) {
+                    this.mail = newValue
+                }
+            }
+        }
+    },
     methods: {
         isRead() {
             this.mail.isRead = !this.mail.isRead
@@ -46,6 +58,9 @@ export default {
         },
         starMail(mailId) {
             this.$emit('starredMail', mailId)
+        },
+        updateStatus(mail) {
+            mailService.updateStatusMail(mail)
         }
     },
     computed: {

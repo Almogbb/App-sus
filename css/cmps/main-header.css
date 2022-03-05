@@ -6,8 +6,6 @@
         height: 10vh;
         margin: 0 auto;
         background-color: lightgrey;
-        padding-inline-end: 60px;
-        padding-inline-start: 60px;
     }
     
     header ul li {
@@ -60,8 +58,6 @@
         height: 10vh;
         margin: 0 auto;
         background-color: lightgrey;
-        padding-inline-end: 60px;
-        padding-inline-start: 60px;
     }
     
     header ul li {
@@ -77,4 +73,9 @@
         text-decoration: none;
         text-transform: uppercase;
         color: #2c3e50;
+    }
+    
+    .nav-bar-menu {
+        font-weight: bold;
+        border-bottom: solid 2px;
     }
