@@ -16,10 +16,10 @@ export default {
                             </router-link>
 
                                 <span v-if="mail.type === 'Archive'"  @click="deleteArchive(mail.id)">
-                                    <img src="../icon/delete.png" width="20" height="20" alt="">
+                                    <img src="icon/delete.png" width="20" height="20" alt="">
                                 </span>
                                 <span v-else @click="sendToArchive(mail.id)">
-                                    <img src="../icon/archive.png" width="20" height="20" alt="">
+                                    <img src="icon/archive.png" width="20" height="20" alt="">
                                 </span>
                                 <span @click="isRead">
                                     <img :src="changeSourceRead" width="20" height="20" alt="" @click="imgClickedRead = !imgClickedRead">
@@ -31,10 +31,10 @@ export default {
         return {
             imgClickedRead: false,
             imgClickedStar: false,
-            imgSourceStar: '../icon/unstarred.png',
-            imageSourceRead: '../icon/read.png',
-            urls: ['../icon/read.png', '../icon/unread.png'],
-            currentUrl: '../icon/read.png',
+            imgSourceStar: 'icon/unstarred.png',
+            imageSourceRead: 'icon/read.png',
+            urls: ['icon/read.png', 'icon/unread.png'],
+            currentUrl: 'icon/read.png',
         }
     },
     watch: {
@@ -65,10 +65,10 @@ export default {
     },
     computed: {
         changeSourceRead() {
-            return this.imgClickedRead ? '../icon/unread.png' : '../icon/read.png'
+            return this.imgClickedRead ? 'icon/unread.png' : 'icon/read.png'
         },
         changeSourceStar() {
-            return this.imgClickedStar ? '../icon/starred.png' : '../icon/unstarred.png'
+            return this.imgClickedStar ? 'icon/starred.png' : 'icon/unstarred.png'
         }
     },
 }
