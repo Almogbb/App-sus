@@ -23,9 +23,10 @@
 
 /* .mail-preview span:nth-child(3),
 .mail-preview span:nth-child(4) {
-    opacity: 0;
-}
-
-.mail-preview :hover span {
     opacity: 1;
+} */
+
+
+/* .mail-preview span:hover {
+    opacity: 0;
 } */
